@@ -1,0 +1,1918 @@
+/* CSS Document */
+.ui-loader {
+	display: none;
+}
+
+
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;	
+}
+
+
+.left {
+	float: left !important;
+}
+
+.right {
+	float: right !important;
+}
+
+.clear {
+	clear: both;	
+}
+
+.relative {
+	position: relative;	
+}
+
+.hidden {
+	display: none;
+}
+
+#handset {
+	position: absolute;
+	margin: 0px auto;
+	width: 631px;
+	height: 896px;
+	left: 50%;
+	margin-left: -300px;
+	top: 50%;
+	margin-top: -390px;	
+	background-image: url(../Images/handset.jpg);
+	background-repeat: no-repeat;
+	min-top: 0px;
+}
+
+#screen {
+	background-color: #212121;
+	position: relative;
+	top: 134px;
+	left: 176px;
+	width: 272px;
+	height: 480px;
+	cursor: pointer;
+	z-index: 0;
+	overflow: hidden;
+}
+
+#unlockpage {
+	position: relative;
+	width: 272px;
+	height: 480px;
+	background-image: url(../Images/unlock_press_hold_background.png);
+	background-position: 0 0;
+}
+
+/* DASHBOARD STYLES */
+#homepage {
+	position: relative;
+	width: 272px;
+	height: 455px;
+	top: 25px;
+}
+
+#homepage .button {
+	position: relative;
+	margin: 0px auto;
+	top: 5px;
+	margin-bottom: 5px;
+	width: 260px;
+	height: 72px;
+	background-image: url(../Images/assets_btn_dashboard_72_up.png);
+	clear: both;
+}
+
+#homepage .button:active {
+	background-image: url(../Images/assets_btn_dashboard_72_down.png);
+}
+
+.buttonIcon {
+	position: relative;
+	left: 10px;
+	top: 20px;	
+}
+
+.buttonTextTop {
+	position: absolute;
+	width: 194px;
+	left: 55px;
+	top: 20px;
+}
+.buttonTextBottom {
+	position: absolute;
+	width: 194px;
+	left: 55px;
+	top: 44px;
+}
+
+#homepage .smlButton {
+	margin: 5px 2px 5px 5px;
+	width: 127px;
+	height: 72px;
+	background-image: url(../Images/assets_btn_dashboard_72_small_up.png);
+	float: left;
+}
+
+#homepage .smlButton:active {
+	background-image: url(../Images/assets_btn_dashboard_72_small_down.png);
+}
+
+#homepage .pumpButton {
+	position: absolute;
+	clear: both;
+	margin: 0px auto;
+	bottom: 0px;
+	left: 0px;
+	width: 272px;
+	height: 66px;
+	background-image: url(../Images/assets_btn_dashboard_pump_up.png);
+}
+
+#homepage .pumpButton:active {
+	background-image: url(../Images/assets_btn_dashboard_pump_down.png);
+}
+
+#cellnovo {
+	position: absolute;
+	left: 50%;
+	margin-left: -32px;
+	top: 92px;	
+}
+
+#unlock {
+	position: absolute;
+	top: 270px;
+	left: 0px;
+}
+
+#holdUnlock {
+	position: absolute;
+	left: 50%;
+	margin-left: -52px;
+	top: 430px;	
+}
+/*
+#confirmpage {
+	position: relative;
+	width: 272px;
+	height: 480px;
+	top: -455px;
+}
+*/
+#confirm {
+	position: absolute;
+	top: 236px;
+	left: 0px;
+}
+
+#holdConfirm {
+	position: absolute;
+	top: 366px;
+	left: 0px;
+	width: 272px;
+	height: 30px;
+	background-image: url(../Images/hold_confirm_background.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	padding-top: 12px;
+}
+
+#confirmMessage {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 100px;	
+}
+
+#confirmTitle {
+	position: absolute;
+	top: 24px;
+}
+
+
+#confirmDetails {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 140px;	
+}
+
+#statusBar {
+	position: absolute;
+	width: 272px;
+	height: 25px;
+	top: 0px;
+	left: 0px;
+	background-color: #373737;
+	border-bottom: 1px solid #000;
+	z-index: 1;
+}
+
+.promptBar {
+	position: absolute;
+	width: 274px;
+	height: 54px;
+	bottom: 0px;
+	left: 0px;
+	margin-left: -1px;
+	z-index: 1;
+	background-image: url(../Images/assets_prompt_bar.png);
+}
+
+
+.popupBar {
+	position: absolute;
+	width: 274px;
+	height: 54px;
+	bottom: 0px;
+	left: 0px;
+	margin-left: -1px;
+	z-index: 5002;
+}
+
+.topPromptBar {
+	margin-top: -5px;
+}
+
+.promptButtons, .popupButtons {
+	margin: 0px auto;
+	margin-top: 8px;
+	width: 248px;
+	height: 40px;
+}
+
+.promptButton, .popupButton {
+	width: 117px;
+	height: 28px;
+	background-image: url(../Images/soft_button_up.png);
+	background-repeat: no-repeat;
+	float: left;
+	margin-right: 7px;
+	text-align: center;
+	padding-top: 12px;
+}
+
+.promptButton:active, .promptButtonDisabled, .popupButton:active {
+	background-image: url(../Images/soft_button_down.png);
+}
+
+.yellowPromptButton {
+	background-image:url(../Images/food_top_button_up.png);
+}
+
+.purplePromptButton {
+	background-image:url(../Images/bg_button_down.png);
+}
+
+.greenPromptButton {
+	background-image:url(../Images/soft_button_activate_down.png);
+}
+
+#statusPump {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+}
+
+#statusTime {
+	position: absolute;
+	left: 50%;
+	margin-left: -18px;
+	top: 6px;
+}
+
+#statusBattery {
+	position: absolute;
+	right: 2px;
+	top: 3px;
+}
+
+#statusOptions {
+	position: absolute;
+	right: 18px;
+	top: 5px;
+}
+
+#pumpIcon {
+	position: absolute;
+	left: 23px;
+	top: 20px;
+}
+
+#pumpText {
+	position: absolute;
+	left: 73px;
+	top: 28px;
+}
+
+/* APPLICATION PANEL */
+.appPanel {
+	position: absolute;
+	width: 272px;
+	height: 455px;
+	top: 0px;
+	left: 272px;
+	background-image: url(../Images/assets_dialog_dimm.png);
+}
+
+.leftAppPanel {
+	left: -272px;
+}
+
+/* POPUP STYLES */
+
+.popup {
+	position: absolute;
+	z-index: 5000;
+	bottom: 0;
+	width: 272px;
+	height: 379px;
+}
+
+#standardPopup {	
+	background-image: url(../Images/popup_bg_standard.png);	
+}
+
+#journalPopup {
+	background-image: url(../Images/popup_bg_standard_no_boxes.png);
+}
+
+.alertPopup {
+	background-image: url(../Images/assets_dialog_dimm.png);
+	position: absolute;
+	z-index: 5000;
+	bottom: 0;
+	width: 272px;
+	height: 455px;
+}
+.alertPopupButton {
+	float: right !important;
+}
+
+.popupIcon {
+	position: absolute;
+	z-index: 5001;
+	top: 21px;
+	left: 98px;
+	width: 77px;
+	height: 62px;
+}
+
+.popupTitle {
+	position: relative;
+	margin: 0px auto;
+	top: 110px;
+	width: 100%;
+	text-align: center;
+}
+
+.popupText {
+	position: relative;
+	margin: 0px auto;
+	top: 180px;	
+	width: 200px;
+	text-align: center;
+}
+
+.popupDate {
+	position: relative;
+    text-align: center;
+    top: 130px;
+}
+
+.popupInfoText {
+	height: 24px;
+    left: 30px;
+    position: relative;
+    top: 160px;
+    width: 212px;
+}
+
+.journalPopupButton {
+	width: 230px;
+	height: 30px;
+    margin-left: 9px;
+    padding-top: 10px;
+    text-align: center;
+	background-image:url(../Images/soft_button_long_up.png);
+}
+
+.journalPopupButton:active {
+	background-image:url(../Images/soft_button_long_down.png);
+}
+
+/* BLOOD GLUCOSE STYLES */
+
+
+/* INSULIN STYLES */
+
+#basalHeader {
+	margin: 0px auto;
+	width: 201px;
+	height: 39px;
+	top: 740px;
+	padding: 18px 0 0 45px;
+	background-image: url(../Images/overview_basal_bttn_up.png);
+	background-repeat: no-repeat;
+}
+
+#basalHeader:active {
+	background-image: url(../Images/overview_basal_bttn_down.png);
+}
+
+#bolusHeader {
+	margin: 0px auto;
+	width: 201px;
+	height: 39px;
+	top: 740px;
+	padding: 18px 0 0 45px;
+	background-image: url(../Images/overview_bolus_bttn_up.png);
+	background-repeat: no-repeat;
+}
+
+#bolusHeader:active {
+	background-image: url(../Images/overview_bolus_bttn_down.png);
+}
+
+.overviewPanel {
+	margin: 0px auto;
+	margin-top: -4px;
+	margin-bottom: 8px;
+	width: 246px;
+	height: 115px;
+	background-image: url(../Images/overview_panel.png);
+	background-repeat: no-repeat;
+}
+
+.overviewTextTop {
+	position: absolute;
+	left: 20px;
+	top: 8px;
+	width: 206px;
+}
+.overviewTextMid {
+	position: absolute;
+	left: 20px;
+	top: 48px;
+	width: 206px;
+}
+.overviewTextBot {
+	position: absolute;
+	left: 20px;
+	top: 90px;
+	width: 206px;
+}
+
+.iconLabel {
+	position: relative;
+	top: -6px;	
+}
+
+.existingBasal {
+	margin: 0px auto;
+	margin-top: 5px;
+	width: 234px;
+	height: 34px;
+	background-image: url(../Images/basal_bttn_review_up.png);
+	padding: 10px;
+}
+
+.existingBasal:active {
+	background-image: url(../Images/basal_bttn_review_down.png);
+}
+
+.existingBasalTextTop {
+	margin-bottom: 4px;	
+}
+
+.existingBasalRate {
+	margin-top: 10px;	
+}
+
+.basalTempButton {
+	position: absolute;
+	left: 8px;
+	bottom: 60px;
+	width: 209px;
+	height: 39px;
+	padding: 15px 0 0 45px;
+	background-image: url(../Images/basal_bttn_temp_up.png);
+}
+
+.basalTempButton:active {
+	background-image: url(../Images/basal_bttn_temp_down.png);
+}
+
+#basalProfilePanel {
+	margin: 0px auto;
+	margin-top: 5px;
+	background-image: url(../Images/basal_profile_panel.png);
+	width: 221px;
+	height: 14px;
+	padding: 18px 10px;
+}
+
+.basalProfileButton {
+	margin: 0px auto;
+	margin-top: 8px;
+	background-image: url(../Images/basal_profile_bttn_up.png);
+	width: 228px;
+	height: 16px;
+	padding: 14px 10px;
+	text-align: center;
+}
+
+.basalProfileButton:active {
+	background-image: url(../Images/basal_profile_bttn_down.png);
+}
+
+.basalPreviewButton {
+	margin: 0px auto;
+	margin-top: 8px;
+	background-image: url(../Images/basal_bttn_review_up.png);
+	width: 234px;
+	height: 16px;
+	padding: 19px 10px;
+	text-align: center;
+}
+
+.basalPreviewButton:active {
+	background-image: url(../Images/basal_bttn_review_down.png);
+}
+
+.basalGraph {
+	margin: 0px auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 241px;
+	height: 82px;
+}
+
+/* Basal Graph */
+.basalGraphTop {
+	background-image: url(../Images/graph_top.png);
+	width: 241px;
+	height: 4px;
+}
+
+.basalGraphBottom {
+	background-image: url(../Images/graph_bottom.png);
+	width: 241px;
+	height: 18px;
+	clear: both;
+}
+.basalGraphBars {
+	margin-left: 1px;	
+	width: 240px;
+	height: 60px;
+	background-image: url(../Images/graph_middle.jpg);
+	overflow: hidden;
+}
+.basalGraphBar {
+	float: left;
+	height: 60px;
+	width: 9px;
+	margin-right: 1px;
+	background-color: #2ec2ff;
+}
+.basalGraphBarActive {
+	float: left;
+	height: 60px;
+	width: 9px;
+	margin-right: 1px;
+	background-color: #ccc;
+}
+
+.basalGraphBarCopy {
+	float: left;
+	height: 60px;
+	width: 9px;
+	margin-right: 1px;
+	background-color: #ffd200;
+}
+
+.basalGraphBarDisabled {
+	float: left;
+	height: 60px;
+	width: 9px;
+	margin-right: 1px;
+	background-color: #333;
+}
+
+.basalPreviewButtons {
+	position: relative;
+	margin: 0px auto;
+	width: 254px;
+	height: 258px;
+	overflow: hidden;	
+}
+
+.basalTimeSelector {
+	width: 272px;
+	height: 44px;
+	background-image: url(../Images/basal_arrow_background.png);
+}
+
+.basalTimePrev {
+	float: left;
+	margin-left: -1px;
+	width: 137px;
+	height: 40px;
+	background-image: url(../Images/basal_arrow_prev_up.png);
+}
+
+.basalTimePrev:active {
+	background-image: url(../Images/basal_arrow_prev_down.png);
+}
+
+.basalTimeNext {
+	float: right;
+	margin-right: -1px;
+	width: 137px;
+	height: 40px;
+	background-image: url(../Images/basal_arrow_next_up.png);
+}
+
+.basalTimeNextCopy {
+	float: right;
+	margin-right: -1px;
+	width: 137px;
+	height: 40px;
+	background-image: url(../Images/basal_arrow_next_up2.png);
+}
+
+.basalTimeNextCopy:active {
+	background-image: url(../Images/basal_arrow_next_down2.png);
+}
+
+.basalTimeNext:active {
+	background-image: url(../Images/basal_arrow_next_down.png);
+}
+
+.basalTimeText {
+	position: relative;
+	margin: 0px auto;
+	height: 14px;
+	width: 102px;
+	text-align: center;
+	top: -27px;
+}
+
+#basalProfileListPanel {
+	overflow: hidden;
+	width: 272px;
+	height: 290px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.unitsHour {
+	position: relative;
+	margin: 0px auto;
+	top: 4px;
+	text-align: center;
+	margin-bottom:15px;
+}
+
+#tempBasalDuration {
+    margin-left: 10px;
+    margin-top: 50px;
+    width: 170px;
+}
+#tempBasalAdjust {
+    width: 90px;
+	margin-top: 50px;
+}
+
+#foodHome {
+	width: 246px;
+	margin-left: 13px;
+}
+
+.foodListButton {
+	position: relative;
+	margin: 0px auto;
+	margin-top: 14px;
+	margin-bottom: 12px;
+	width: 246px;
+	height: 60px;
+	background-image:url(../Images/food_list_button_bg.png);
+	clear: both;
+}
+
+.foodListButton:active {
+	background-image:url(../Images/food_list_button_bg_down.png);
+}
+
+.foodListButtonIcon {
+	position: relative;
+	left: 14px;
+	top: 14px;
+}
+
+#foodHome .buttonTextMiddle {
+	left: 60px;
+    position: absolute;
+    top: 22px;
+    width: 194px;
+}
+
+.filterPanel {
+	width: 230px;	
+	position: relative;
+	left: 20px;
+	top: 17px;
+	background-image:url(../Images/journal_filter_panel.png);
+}
+
+#foodFilterList .filterPanel {
+	padding-top: 15px;
+	height: 307px;
+}
+
+.foodFilterItem {
+	width: 220px;
+	margin-left: 5px;
+	height: 43px;
+	position: relative;
+}
+
+.filterIcon {
+	position: absolute;
+	left: 5px;
+	height: 28px;
+	width: 28px;	
+}
+
+.filterItemName {
+	position: absolute;
+	left: 40px;	
+	top: 3px;
+}
+
+.foodFilterSelected {
+	position: absolute;
+	right: 10px;
+	height: 28px;
+	width: 28px;
+	background-image: url(../Images/journal_filter_icon_deselected.png);
+}
+
+.foodFilterSelectedActive {
+	background-image: url(../Images/journal_filter_icon_selected.png);
+}
+
+.newFoodItem {
+	margin: 0px auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: 234px;
+	height: 34px;
+	position: relative;
+	background-image: url(../Images/basal_bttn_review_up.png);
+	padding: 10px;
+}
+
+.newFoodItem:active, .newFoodItemActive {
+	background-image: url(../Images/basal_bttn_review_down.png);
+}
+.newFoodItemIsFavourite {
+	background-image: url(../Images/icon_FL_fav_inactive.png);
+	width: 36px;
+	height: 36px;
+}
+
+.newFoodItemIDeleteIcon {
+	background-image: url(../Images/fl_delete_icon.png);
+	width: 36px;
+	height: 36px;
+}
+
+.newFoodItemIsFavouriteActive {
+	background-image: url(../Images/icon_FL_fav_active.png);
+}
+
+.newFoodItem:active {
+	background-image: url(../Images/basal_bttn_review_down.png);
+}
+
+.newFoodItem .buttonTextMiddle {
+	left: 60px;
+    position: absolute;
+    top: 18px;
+    width: 194px;
+}
+
+
+.unitsDataBevel {
+	width: 242px;
+	height: 27px;
+	margin-left: 16px;
+	background-image: url(../Images/food_data_bevel_large.png);
+	text-align: center;
+}
+
+.unitsDoubleBevel {
+	background-image:url(../Images/bolus_data_bevel_twin.png);
+	width: 233px;
+	height: 27px;
+	margin-left: 16px;
+}
+.bolusBevelSmall {
+    height: 25px;
+	padding-top: 2px;
+    margin-left: 2px;
+    text-align: center;
+    width: 70px;
+}
+.bolusBevelLarge {
+    margin-left: 42px;
+    text-align: center;
+    width: 100px;
+	height: 25px;
+	padding-top: 2px;
+}
+
+.foodGroupItem {
+	width: 246px;
+	height: 61px;
+	margin-top: 7px;
+	margin-left: 13px;
+	background-image: url(../Images/food_list_bg.png);
+	position: relative;
+}
+
+.foodGroupItemActive {
+	background-image: url(../Images/food_list_bg_active.png);
+}
+
+.foodGroupIcon {
+    height: 28px;
+    left: 12px;
+	top: 16px;
+    position: absolute;
+    width: 28px;
+}
+.foodGroupName {
+    left: 60px;
+    position: absolute;
+    top: 16px;
+}
+
+.foodItem {
+	position: relative;
+	width: 254px;
+	height: 53px;	
+	margin-left: 10px;
+}
+
+#foodItemPanel {
+	height: 262px;
+	overflow: hidden;
+	position: relative;
+}
+
+#foodItemList {
+	position: absolute;
+	height: 254px;
+}
+
+#foodList .foodItem {
+	margin-top: 10px;
+	background-image:url(../Images/food_item_unchecked.png);
+}
+
+.foodItemChecked {
+	float: left;
+	width: 34px;
+	height: 34px;
+	margin-top: 10px;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.foodItemCheckedActive {
+	background-image:url(../Images/food_checkbox_check.png);
+}
+
+.foodItemName {
+	position: absolute;
+	top: 8px;
+}
+
+.foodItemFoodGroup {
+	position: absolute;
+	bottom: 8px;
+}
+
+#foodList .foodItemFoodGroup {
+	margin-left: 19px;
+}
+
+.foodItemIsFavourite {
+	bottom: 8px;
+    height: 14px;
+    position: absolute;
+    width: 14px;
+}
+
+.foodItemIsFavouriteActive {
+	background-image: url(../Images/food_fav_active_lightbg.png);
+	background-position: bottom;
+}
+
+.foodItemCarbohydrateValue {
+	font-size: 18px;
+    margin-right: 14px;
+    margin-top: 14px;	
+}
+
+.foodCalculatorPanel {
+	width: 272px;
+	height: 417px;
+	padding-top: 12px;
+	background-image: url(../Images/food_calculator_bg.png);
+}
+
+#foodCalculatorList {
+	width: 272px;
+	height: 200px;
+	overflow: hidden;
+}
+
+#foodCalculatorList .foodItem {
+	background-image:url(../Images/basal_bttn_review_up.png);
+}
+
+.foodCalculatorItemRemove {
+	float: left;
+	width: 28px;
+	height: 28px;
+	background-image: url(../Images/icon_FL_remove_item_normal.png);
+	margin-top: 12px;
+	margin-left: 10px;
+	margin-right: 16px;
+}
+
+.foodCalculatorTotalPanel {
+	height: 44px;
+    margin-left: 44px;
+    margin-top: 42px;
+    width: 180px;
+}
+
+.calculateBolusBttn {
+	background-image: url(../Images/assets_btn_std_up.png);
+    height: 30px;
+    margin-left: 22px;
+    padding-left: 50px;
+    padding-top: 10px;
+    width: 178px;
+}
+
+.calculateBolusBttn:active {
+	background-image: url(../Images/assets_btn_std_down.png);
+}
+
+.activityStatus {
+	margin-top: 10px;
+	margin-left: 11px;
+	width: 250px;
+	height: 106px;
+	background-image:url(../Images/activity_txt_bg.png); 
+}
+
+.currentScorePanel, .targetScorePanel {
+	float: left;
+	width: 83px;
+	text-align: center;
+	margin-top: 5px;
+	height: 96px;
+}
+
+.dailyAveragePanel {
+	float: left;
+	width: 84px;
+	text-align: center;
+	margin-top: 5px;
+	height: 96px;
+}
+
+.activityStatusValue {
+	font-size: 40px;
+    height: 40px;
+    padding-top: 15px;
+}
+
+.activityGraph {
+    margin-bottom: 5px;
+    margin-top:  10px;
+}
+.activityGraphTop {
+    background-image: url(../Images/activity_graph_top.png);
+    height: 4px;
+    width: 272px;
+}
+.activityGraphMain {
+    height: 160px;
+	overflow: hidden;
+}
+.activityGraphLeft {
+	background-image: url(../Images/activity_graph_left.png);
+	height: 160px;
+	width: 32px;
+    float: left;
+}
+.activityGraphBars {
+	background-image:url(../Images/graph_middle.jpg);
+	background-repeat: repeat-y;
+	width: 240px;
+	height:160px;
+    float: right;
+}
+.activityGraphBottom {
+    background-image: url(../Images/activity_graph_bottom_hours.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 272px;
+}
+
+.activityGraphBar {
+	float: left;
+	height: 160px;
+	width: 9px;
+	margin-right: 1px;
+	background-color: #FF5A00;
+}
+
+.activityGraphBarDisabled {
+	background-color: #333333;
+}
+
+#activityRecordActivity {
+	margin-left: 12px;
+	text-align: center;
+	width: 248px;
+	height: 32px;
+	padding-top: 10px;
+	background-image: url(../Images/activity_record_bttn_up.png);
+}
+
+#activityRecordActivity:active {
+	background-image: url(../Images/activity_record_bttn_down.png);
+}
+
+.activityPanel {
+	width: 247px;
+	height: 331px;
+	margin-left: 12px;
+	margin-top: 12px;
+	background-image:url(../Images/activity_select_bg.png);
+}
+
+.activitySelectPanel {
+    height: 154px;
+    padding-left: 11px;
+    padding-top: 20px;
+    width: 235px;
+}
+.activitySelect {
+    float: left;
+    height: 80px;
+    margin-right: 8px;
+    text-align: center;
+    width: 50px;
+}
+
+.activityIcon {
+	width: 50px;
+	height: 50px;
+}
+
+.activityIconPlay {
+	background-image:url(../Images/activity_icon_play.png);	
+}
+
+.activityIconPlayActive {
+	background-image:url(../Images/activity_icon_play_down.png);	
+}
+
+.activityIconSport {
+	background-image:url(../Images/activity_icon_sport.png);	
+}
+
+.activityIconSportActive {
+	background-image:url(../Images/activity_icon_sport_down.png);	
+}
+
+.activityIconWalk {
+	background-image:url(../Images/activity_icon_walk.png);	
+}
+
+.activityIconWalkActive {
+	background-image:url(../Images/activity_icon_walk_down.png);	
+}
+
+.activityIconGym {
+	background-image:url(../Images/activity_icon_gym.png);	
+}
+
+.activityIconGymActive {
+	background-image:url(../Images/activity_icon_gym_down.png);	
+}
+
+.activityIconCycle {
+	background-image:url(../Images/activity_icon_cycle.png);	
+}
+
+.activityIconCycleActive {
+	background-image:url(../Images/activity_icon_cycle_down.png);	
+}
+
+.activityIconRow {
+	background-image:url(../Images/activity_icon_row.png);	
+}
+
+.activityIconRowActive {
+	background-image:url(../Images/activity_icon_row_down.png);	
+}
+
+.activityIconRun {
+	background-image:url(../Images/activity_icon_run.png);	
+}
+
+.activityIconRunActive {
+	background-image:url(../Images/activity_icon_run_down.png);	
+}
+
+.activityIconSwim {
+	background-image:url(../Images/activity_icon_swim.png);	
+}
+
+.activityIconSwimActive {
+	background-image:url(../Images/activity_icon_swim_down.png);	
+}
+
+#activityTimer {
+	font-family: Digital;
+	color: #fff;
+	font-size: 60px;
+	text-align: center;
+    margin-top: 44px;  
+}
+
+
+.activityStartTimer {
+	width: 230px;
+	height: 32px;	
+	text-align: center;
+	margin-left: 9px;
+	margin-top: 36px;
+	padding-top: 10px;
+}
+
+.activityStartTimerActive {
+	background-image: url(../Images/assets_btn_start_up.png);
+}
+
+.activityStartTimerActive:active {
+	background-image: url(../Images/assets_btn_start_down.png);
+}
+
+.activityStartTimerDisabled {
+	background-image: url(../Images/assets_btn_start_disabled.png);
+}
+
+#activityCompletePanel {
+	background-image: url(../Images/activity_complete_background.png);
+	height: 324px;
+	width: 272px;
+	position: absolute;
+}
+
+.activityCompleteIcon {
+	position: absolute;
+	width: 66px;
+	height: 66px;
+	left: 103px;
+	top: 42px;
+}
+
+#activityCompletePlay {
+	background-image:url(../Images/activity_complete_icon_play.png);
+}
+
+#activityCompleteSport {
+	background-image:url(../Images/activity_complete_icon_sport.png);
+}
+
+#activityCompleteWalk {
+	background-image:url(../Images/activity_complete_icon_walk.png);
+}
+
+#activityCompleteGym {
+	background-image:url(../Images/activity_complete_icon_gym.png);
+}
+
+#activityCompleteCycle {
+	background-image:url(../Images/activity_complete_icon_cycle.png);
+}
+
+#activityCompleteRow {
+	background-image:url(../Images/activity_complete_icon_row.png);
+}
+
+#activityCompleteRun {
+	background-image:url(../Images/activity_complete_icon_run.png);
+}
+
+#activityCompleteSwim {
+	background-image:url(../Images/activity_complete_icon_swim.png);
+}
+
+#activityCompleteStats {
+    height: 164px;
+    left: 24px;
+    padding-top: 16px;
+    position: absolute;
+    top: 154px;
+    width: 224px;
+}
+.activityCompleteText {
+    font-size: 28px;
+    height: 40px;
+    text-align: center;
+}
+
+#activityCompleteTime {
+	color: #FFFFFF;
+    font-family: Digital;
+    font-size: 60px;
+    height: 50px;
+    margin-top: 18px;
+	margin-bottom: 5px;
+    padding: 0;
+    text-align: center;
+}
+
+#journalPanel {
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+
+#journalList {
+	position: absolute;
+	height: 300px;
+}
+
+.journalItem {
+	position: relative;
+	width: 254px;
+	height: 54px;	
+	margin-left: 10px;
+	margin-top: 5px;
+	background-image:url(../Images/journal_item_btn_up.png);
+}
+
+.journalItem:active {
+	background-image:url(../Images/journal_item_btn_down.png);
+}
+
+.journalTypeIcon {	
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin-top: 9px;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.journalInfo {
+	width: 36px;
+	height: 36px;
+	margin-top: 8px;
+	margin-right: 5px;
+}
+.journalTime {
+	position: absolute;
+	bottom: 8px;
+}
+
+.journalDate {
+	position: absolute;
+	bottom: 8px;
+	left: 90px;
+}
+
+#journalFilterList .filterPanel {
+	padding-top: 13px;
+	height: 309px;
+}
+
+.journalFilterItem {
+	width: 220px;
+	margin-left: 5px;
+	height: 38px;
+	position: relative;
+}
+/*
+.filterIcon {
+	position: absolute;
+	left: 5px;
+	height: 28px;
+	width: 28px;	
+}*/
+
+.journalFilterSelected {
+	position: absolute;
+	right: 10px;
+	height: 28px;
+	width: 28px;
+	background-image: url(../Images/journal_filter_icon_deselected.png);
+}
+
+.journalFilterSelectedActive {
+	background-image: url(../Images/journal_filter_icon_selected.png);
+}
+
+.bloodGlucoseReadingPanel {
+	width: 252px;
+	padding-top: 10px;
+	height: 268px;
+	background-image: url(../Images/bg_home_panel.png);
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.bloodGlucoseOverview {
+	position: relative;
+	width: 160px;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+#bloodGlucoseOverview, #bloodGlucoseResultsOverview {
+	margin-left: 40px;
+}
+
+.bloodGlucoseValue {
+    bottom: 0px;
+    font-size: 40px;
+    height: 30px;
+    left: 0px;
+	text-align:right;
+	width: 90px;
+    position: absolute;
+}
+.bloodGlucoseUnits {
+    bottom: 0px;
+    position: absolute;
+	text-align: right;
+	width: 60px;
+    right: 0px;
+}
+
+#bloodGlucoseAveragesPanel {
+	width: 252px;
+	padding-top: 10px;
+	height: 268px;
+	background-image: url(../Images/bg_blood_glucose_panel.png);
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.bloodGlucoseAverage {
+	height: 60px;
+    margin-left: 40px;
+    margin-top: 30px;
+    width: 168px;
+}
+
+.bloodGlucoseLastTaken {
+	width: 100%;
+	text-align: center;
+}
+
+.bloodGlucoseAverageValue {
+	text-align: right;
+}
+
+.bgControlReadingPanel {
+	width: 272px;
+	height: 480px;
+	background-image:url(../Images/bg_control_reading.png);
+	position: relative; 
+}
+
+.bgControlReadingTitle {
+	position: absolute;
+	top: 66px;
+	left: 50px;
+}
+
+.bgControlReadingInstructions {
+	text-align: center;
+	position: absolute;
+	bottom: 120px;
+	left: 90px;
+}
+.bolusOption {
+	position: relative;
+	margin-left: 8px;
+	width: 239px;
+	height: 66px;
+	margin-top: 5px;
+	margin-bottom: 8px;
+	background-image: url(../Images/bolus_check_button_up.png);
+	padding-top: 10px;
+	padding-left: 15px;
+}
+
+.bolusChecked {
+	position: absolute;
+	width: 34px;
+	height: 34px;
+	right: 10px;
+	top: 20px;
+}
+
+.bolusCheckedActive {
+	background-image: url(../Images/bolus_ticked_box.png);
+}
+
+.bolusValuePanel {
+	text-align: center;
+	margin-left: 9px;
+	width: 252px;
+	height: 80px;
+	margin-top: 12px;
+	padding-top: 10px;
+	background-image: url(../Images/bolus_small_panel.png);
+}
+
+.bolusValue {
+	font-size: 40px;
+	margin-top: 10px;
+}
+
+
+.settingsCheckItem {
+    height: 43px;
+    margin-left: 15px;
+    margin-top: 10px;
+    position: relative;
+    width: 260px;
+}
+
+.settingsItemName {
+	left: 50px;
+    position: absolute;
+    top: 3px;
+}
+
+.settingsCheckSelected {
+	position: absolute;
+	right: 10px;
+	height: 28px;
+	width: 28px;
+	background-image: url(../Images/journal_filter_icon_deselected.png);
+}
+
+.settingsCheckSelectedActive {
+	background-image: url(../Images/journal_filter_icon_selected.png);
+}
+
+.settingsButton {
+	width: 260px;
+	height: 73px;
+	background-image: url(../Images/settings_bttn_home_up.png);
+    clear: both;
+   	margin-left: 5px;
+	margin-bottom: 10px;
+    position: relative;
+}
+
+.settingsButton:active {
+	background-image: url(../Images/settings_bttn_home_down.png);
+}
+
+.settingsButtonIcon {
+	position: absolute;
+	left: 14px;
+}
+
+.settingsButton .settingsButtonIcon {
+	top: 14px;
+}
+
+.settingsButton .buttonTextMiddle {
+	left: 80px;
+    position: absolute;
+    top: 24px;
+    width: 194px;
+}
+
+.smallHandsetButtons {
+	margin-top: 5px;
+	margin-left: 14px;
+	margin-bottom: 8px;
+	height: 61px;
+}
+.handsetSettingsButtonSml {
+	position: relative;
+	background-image: url(../Images/settings_bttn_handset_small_up.png);
+    float: left;
+    height: 61px;
+    margin-right: 7px;
+    width: 110px;
+	padding-left: 8px;
+}
+
+.handsetSettingsButtomSml:active {
+	background-image: url(../Images/settings_bttn_handset_small_down.png);
+}
+
+.handsetSettingsButtonLg {
+	position: relative;
+	width: 238px;
+	height: 61px;
+	padding-left: 8px;
+	margin-left: 14px;
+	margin-bottom: 8px;
+	margin-top: 5px;
+	background-image: url(../Images/settings_bttn_handset_large_up.png);
+}
+.handsetSettingsButtonLg:active {
+	background-image: url(../Images/settings_bttn_handset_large_down.png);
+}
+
+.handsetSettingsButtonSml .buttonTextMiddle {
+	margin-top: 18px;
+}
+
+.handsetButtonTextTop {
+	padding-top: 10px;
+}
+
+.applicationSettingsButton {
+	width: 260px;
+	height: 83px;
+	background-image: url(../Images/settings_bttn_app_settings_up.png);
+	clear: both;
+	margin-top: 10px;
+   	margin-left: 5px;
+	margin-bottom: -5px;
+    position: relative;
+}
+.applicationSettingsButton:active {
+	background-image: url(../Images/settings_bttn_app_settings_down.png);
+}
+
+.applicationSettingsButton .settingsButtonIcon {
+	top: 19px;
+}
+
+.applicationSettingsButton .buttonTextMiddle, .languageButton .buttonTextMiddle {
+	left: 80px;
+    position: absolute;
+    top: 31px;
+    width: 194px;
+}
+
+#editHandsetDate {
+	padding-top: 50px;
+}
+
+#editHandsetTime {
+	padding-top: 60px;
+}
+
+
+.languageIcon {
+	position: absolute;
+	left: 12px;
+	top: 23px;
+}
+
+.languageButton {
+	width: 260px;
+	height: 83px;
+	background-image: url(../Images/settings_bttn_language_unchecked.png);
+	clear: both;
+	margin-top: 10px;
+   	margin-left: 5px;
+	margin-bottom: -5px;
+    position: relative;
+}
+
+.languageButtonActive {
+	background-image: url(../Images/settings_bttn_language_checked.png);
+}
+
+.languageCheck {
+	position: absolute;
+	right: 15px;
+	top: 24px;
+	width: 34px;
+	height: 34px;
+}
+
+.informationPanel {
+	padding-left: 22px;
+    padding-top: 24px;
+}
+
+.informationItem {
+	height: 80px;
+}
+
+.horizontalDividerLeft {
+	width: 225px;
+	height: 4px;
+	background-image:url(../Images/horizontal_dividing_dots_left_align.png);
+	margin-top: 20px;	
+}
+
+.insulinSettingsButtonLg {
+	position: relative;
+	width: 216px;
+	height: 43px;
+	padding-top: 18px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: 14px;
+	margin-bottom: 8px;
+	margin-top: 5px;
+	background-image: url(../Images/settings_bttn_handset_large_up.png);
+}
+
+#targetActivityScoreBttn:active {	
+	background-image: url(../Images/settings_bttn_handset_large_down.png);
+}
+
+#insulinToCarbSliderContainer {
+	height: 210px;
+    margin-left: 51px;
+    margin-top: 5px;
+    width: 164px;
+}
+
+.sliderVerticalDivider {
+	text-align: center;
+	width: 30px;
+	padding-top: 84px;
+}
+
+.insulinToCarbsUnits {
+	width: 67px;
+	text-align: center;
+}
+
+
+.insulinSettingsButtonSml {
+	position: relative;
+	width: 218px;
+	height: 33px;
+	margin-top: 5px;
+	padding-left: 15px;
+	padding-top: 12px;
+	padding-right: 13px; 
+	margin-left: 15px;
+	background-image: url(../Images/settings_pump_toggle_bttn_up.png);
+}
+
+.pumpFound {
+	font-size: 28px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.pumpDetails {
+	width: 234px;	
+	margin: 0px auto;
+	height: 30px;
+	margin-top: 5px;
+}
+
+#pumpNameEdit {
+	text-align: center;
+}
+
+.bolusDeliveryType {
+	width: 52px;
+	height: 53px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#bolusPhase1 {
+	background-image: url(../Images/bolus_bttn_phase1_up.png);
+	margin-left: 18px;
+}
+.bolusPhase1Active {
+	background-image: url(../Images/bolus_bttn_phase1_down.png) !important;
+}
+
+#bolusPhase2 {
+	background-image: url(../Images/bolus_bttn_phase2_up.png);
+}
+.bolusPhase2Active {
+	background-image: url(../Images/bolus_bttn_phase2_down.png) !important;
+}
+
+#bolusPhase3 {
+	background-image: url(../Images/bolus_bttn_phase3_up.png);
+}
+.bolusPhase3Active {
+	background-image: url(../Images/bolus_bttn_phase3_down.png) !important;
+}
+
+#bolusPhase4 {
+	background-image: url(../Images/bolus_bttn_phase4_up.png);
+}
+.bolusPhase4Active {
+	background-image: url(../Images/bolus_bttn_phase4_down.png) !important;
+}
+
+.itemNavigation {
+	width: 272px;
+	height: 44px;
+	background-image:url(../Images/food_list_arrow_background.png);
+}
+
+.itemNavigationNext {
+	width: 105px;
+	height: 40px;
+	background-image:url(../Images/food_list_arrow_next_up.png);
+	float: left;
+}
+
+.itemNavigationNext:active {
+	background-image:url(../Images/food_list_arrow_next_down.png);
+}
+
+.itemNavigationPrev {
+	width: 104px;
+	height: 40px;
+	background-image:url(../Images/food_list_arrow_prev_up.png);
+	float: right;
+}
+
+.itemNavigationPrev:active {
+	background-image:url(../Images/food_list_arrow_prev_down.png);
+}
+
+.itemNavigationPageNo {
+	padding-top: 10px;
+	height: 34px;
+	width: 63px;
+	float: left;
+	text-align: center;
+}
+
+.bgAssessmentPanel {
+	width: 220px;
+	height: 150px;
+	margin-left: 15px;
+	margin-top: 40px;
+}
+
+.bgAssessmentItem {
+	width: 100%;
+	height: 30px;
+	margin-bottom: 5px;
+}
+
+.bgAssessmentIcon {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.userInputButton {
+	width: 20px !important;
+	height: 20px !important;
+	background-color: #343434;
+	color: #707070;
+	float: left;
+	margin-right: 5px;
+	padding: 8px;
+}
+
+#bgReadingTakenPanel {
+	height: 340px;
+	width:226px;
+	margin-left: 22px; 
+}
+
+#bgReadingTakenTop {
+	height: 80px;
+	text-align: center;
+}
+
+#measurementSuccessful {
+	font-size: 30px;
+	line-height: 30px;
+	margin-top: 14px;
+}
+
+#bloodGlucoseReading {
+	margin-left: 14px;
+}
+
+#bgReadingTakenBottom {
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 14px;
+	text-align: center;
+}
+
+#bgHealthAssessmentPanel {
+	background-image:url(../Images/bg_health_ass_panel.png);
+	width: 231px;
+	height: 258px;
+	margin-top: 10px;
+	margin-left: 20px;
+	padding-top: 10px;
+	text-align: center;
+}
+#bgWellBeingPanel {
+	height: 105px;
+	margin-top: 15px;
+}
+
+.wellbeingSelected {
+	position: absolute;
+	right: 10px;
+	height: 28px;
+	width: 28px;
+	background-image: url(../Images/journal_filter_icon_deselected.png);
+}
+
+.wellbeingSelectedActive {
+	background-image: url(../Images/journal_filter_icon_selected.png);
+}
+
+.dietSelected {
+	position: absolute;
+	right: 10px;
+	height: 28px;
+	width: 28px;
+	background-image: url(../Images/journal_filter_icon_deselected.png);
+}
+
+.dietSelectedActive {
+	background-image: url(../Images/journal_filter_icon_selected.png);
+}
+
+#addNoteBttn {
+	background-image: url(../Images/bg_health_note.png);
+	width: 231px;
+	height: 52px;
+	padding-top: 10px;
+	margin-top: 15px;
+	text-align: left;
+}
+
+#addNoteIcon {
+	background-image: url(../Images/bg_icn_add_note.png);
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-right: 8px;
+	margin-top: 5px;
+	margin-left: 8px;
+}
+
+.bgAssessmentText {
+	float: left;
+	width: 180px;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: bold;
+}
+
+#applicationTargetBGLow {
+	padding-top: 10px;
+}
+
+#applicationTargetBGHigh {
+	padding-top: 10px;
+}
+
+.bgReadingTakenText {
+	float: right;
+	width: 148px;
+}
+
+#strFoodCarbohydratesGrams {
+	margin-top: 50px;
+}

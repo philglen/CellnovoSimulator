@@ -1,0 +1,115 @@
+/* CSS Document */
+@font-face {
+ font-family: GothamSemiNarrow-Bold;
+ src: url("../Fonts/GothamSemiNarrow-Bold.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: GothamSemiNarrow-Bold;
+ src: url("../Fonts/GothamSemiNarrow-Bold.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+ font-family: GothamSemiNarrow-Medium;
+ src: url("../Fonts/GothamSemiNarrow-Medium.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: GothamSemiNarrow-Medium;
+ src: url("../Fonts/GothamSemiNarrow-Medium.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+ font-family: GothamSemiNarrow-Light;
+ src: url("../Fonts/GothamSemiNarrow-Light.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: GothamSemiNarrow-Light;
+ src: url("../Fonts/GothamSemiNarrow-Light.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+ font-family: GothamSemiNarrow-Book;
+ src: url("../Fonts/GothamSemiNarrow-Book.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: GothamSemiNarrow-Book;
+ src: url("../Fonts/GothamSemiNarrow-Book.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+ font-family: Digital;
+ src: url("../Fonts/digital-7.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: Digital;
+ src: url("../Fonts/digital-7.ttf") /* TTF file for CSS3 browsers */
+}
+
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;	
+}
+
+body, html, p {
+	font-family: GothamSemiNarrow-Book;
+	color: #fff;
+	line-height: 18px;
+}
+
+.sml {
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.med {
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.bold {
+	font-weight: bold;	
+}
+
+.purple {
+	color: #de00ff;
+}
+
+.blue {
+	color: #2ec2ff;
+}
+
+.yellow {
+	color: #ffd200;
+}
+
+.orange {
+	color: #ff5a00;	
+}
+
+.green {
+	color: #56af31;	
+}
+
+.white {
+	color: #fff;	
+}
+
+.red {
+	color: #ff0000;	
+}
+
+.black {
+	color: #000;
+}
+
+h1 {
+	background-image: url(../Images/assets_titlebar.png);
+	background-repeat: no-repeat;
+	padding: 13px 0 0 10px;
+	width: 262px;
+	height: 29px;
+	margin: 0;
+}

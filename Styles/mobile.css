@@ -1,0 +1,23 @@
+html,body {
+	background-color: #000;
+}
+
+body {
+		
+}
+
+#handset {
+	background: none;
+	height: 480px;
+	width: 272px;
+	margin-left: -310px;
+	margin-top: -355px;
+}
+
+#handsetLandscape {
+	background: none;
+	width: 480px;
+	height: 272px;
+	margin-left: -436px;
+	margin-top: -210px;
+}

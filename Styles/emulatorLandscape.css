@@ -1,0 +1,142 @@
+/* CSS Document */
+#handsetLandscape {
+	position: absolute;
+	margin: 0px auto;
+	height: 631px;
+	width: 896px;
+	left: 50%;
+	margin-left: -450px;
+	top: 50%;
+	margin-top: -300px;	
+	background-image: url(../Images/handsetLandscape.jpg);
+	background-repeat: no-repeat;
+	min-top: 0px;
+}
+
+#screenLandscape {
+	position: relative;
+	top: 111px;
+	left: 196px;
+	height: 272px;
+	width: 480px;
+	cursor: pointer;
+	z-index: 0;
+	overflow: hidden;
+	background-color: #141414;
+}
+
+#statusBarLandscape {
+	position: absolute;
+	width: 480px;
+	height: 25px;
+	top: 0px;
+	left: 0px;
+	background-color: #373737;
+	border-bottom: 1px solid #000;
+	z-index: 1;
+}
+
+.keyboardTitle {
+	position: absolute;
+	top: 48px;
+	left: 35px;
+}
+
+.keyboardReadout {
+	position: absolute;
+	padding: 15px;
+	right: -80px;
+	top: 33px;
+	width: 355px;
+	height: 18px;
+	background-image: url(../Images/keyboard_readout_bevel.png);
+}
+
+.backspace {
+	position: absolute;
+	background-image: url(../Images/keyboard_bttn_clear_up.png);
+	width: 39px;
+	height: 36px;
+	right: 10px;
+	top: 39px;
+}
+.caption {
+	float: left;	
+}
+.cursor {
+	float: left;	
+}
+.keyboard {
+	position: absolute;
+	width: 480px;
+	height: 124px;
+	top: 90px;
+}
+
+.bottomRow {
+	position: absolute;
+	width: 480px;
+	height: 38px;
+	bottom: 8px;
+}
+
+.bottomRowButtonLeft {
+	position: absolute;
+	width: 50px;
+	height: 26px;
+	bottom: 2px;
+	left: 2px;
+	padding: 9px 0 0 24px;
+}
+
+.bottomRowButtonRight {
+	position: absolute;
+	width: 60px;
+	height: 26px;
+	bottom: 2px;
+	right: 2px;	
+	padding: 9px 0 0 14px;
+}
+
+
+#keyboardError {
+	width: 480px;
+	height: 225px;
+	background-image: url(../Images/keyboard_error_popup.png);
+	position: relative;
+	margin-top: 46px;
+	margin-left: -1px;
+}
+
+#keyboardErrorIcon {
+	position: absolute;
+	width: 77px;
+	height: 62px;
+	top: 21px;
+	left: 203px;
+}
+
+#keyboardErrorText {
+	height: 40px;
+    left: 40px;
+    position: absolute;
+    text-align: center;
+    top: 112px;
+    width: 400px;
+}
+
+#keyboardErrorOk {
+	width: 465px;
+	height: 31px;
+	background-image: url(../Images/soft_longest_button_up.png);
+	position: absolute;
+	bottom: 7px;
+	left: 7px;
+	text-align: center;
+	padding-top: 9px;
+	color: #000;	
+}
+
+#keyboardErrorOk:active {
+	background-image: url(../Images/soft_longest_button_down.png);
+}

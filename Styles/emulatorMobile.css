@@ -1,0 +1,271 @@
+/* CSS Document */
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;	
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;	
+}
+
+.relative {
+	position: relative;	
+}
+
+.hidden {
+	display: none;
+}
+
+#screen {
+	background-color: #212121;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 272px;
+	height: 480px;
+	cursor: pointer;
+	z-index: 0;
+	overflow: hidden;
+}
+
+#unlockpage {
+	position: relative;
+	width: 272px;
+	height: 480px;
+	background-image: url(../Images/unlock_press_hold_background.png);
+	background-position: 0 0;
+}
+
+/* DASHBOARD STYLES */
+#homepage {
+	position: relative;
+	width: 272px;
+	height: 455px;
+	top: 25px;
+}
+
+#homepage .button {
+	position: relative;
+	margin: 0px auto;
+	top: 5px;
+	margin-bottom: 5px;
+	width: 260px;
+	height: 72px;
+	background-image: url(../Images/assets_btn_dashboard_72_up.png);
+	clear: both;
+}
+
+#homepage .button:active {
+	background-image: url(../Images/assets_btn_dashboard_72_down.png);
+}
+
+.buttonIcon {
+	position: relative;
+	left: 10px;
+	top: 20px;	
+}
+
+.buttonTextTop {
+	position: absolute;
+	width: 194px;
+	left: 55px;
+	top: 20px;
+}
+.buttonTextBottom {
+	position: absolute;
+	width: 194px;
+	left: 55px;
+	top: 44px;
+}
+
+#homepage .smlButton {
+	margin: 5px 2px 5px 5px;
+	width: 127px;
+	height: 72px;
+	background-image: url(../Images/assets_btn_dashboard_72_small_up.png);
+	float: left;
+}
+
+#homepage .smlButton:active {
+	background-image: url(../Images/assets_btn_dashboard_72_small_down.png);
+}
+
+#homepage .pumpButton {
+	position: absolute;
+	clear: both;
+	margin: 0px auto;
+	bottom: 0px;
+	left: 0px;
+	width: 272px;
+	height: 66px;
+	background-image: url(../Images/assets_btn_dashboard_pump_up.png);
+}
+
+#homepage .pumpButton:active {
+	background-image: url(../Images/assets_btn_dashboard_pump_down.png);
+}
+
+#cellnovo {
+	position: absolute;
+	left: 50%;
+	margin-left: -32px;
+	top: 92px;	
+}
+
+#holdUnlock {
+	position: absolute;
+	left: 50%;
+	margin-left: -52px;
+	top: 430px;	
+}
+
+#statusBar {
+	position: absolute;
+	width: 272px;
+	height: 25px;
+	top: 0px;
+	left: 0px;
+	background-color: #373737;
+	border-bottom: 1px solid #000;
+	z-index: 1;
+}
+
+.promptBar {
+	position: absolute;
+	width: 274px;
+	height: 54px;
+	bottom: 0px;
+	left: 0px;
+	margin-left: -1px;
+	z-index: 1;
+	background-image: url(../Images/assets_prompt_bar.png);
+}
+
+.promptButtons {
+	margin: 0px auto;
+	margin-top: 8px;
+	width: 248px;
+	height: 40px;	
+}
+
+.promptButton {
+	width: 117px;
+	height: 28px;
+	background-image: url(../Images/soft_button_up.png);
+	background-repeat: no-repeat;
+	float: left;
+	margin-right: 7px;
+	text-align: center;
+	padding-top: 12px;
+}
+
+.promptButton:active {
+	background-image: url(../Images/soft_button_down.png);
+}
+
+#statusPump {
+	position: absolute;
+	left: 3px;
+	top: 3px;
+}
+
+#statusConnection {
+	position: absolute;
+	left: 30px;
+	top: 9px;
+}
+
+#statusTime {
+	position: absolute;
+	left: 50%;
+	margin-left: -18px;
+	top: 6px;
+}
+
+#statusBattery {
+	position: absolute;
+	right: 2px;
+	top: 3px;
+}
+
+#unlock {
+	position: absolute;
+	top: 270px;
+	left: 0px;
+}
+
+#pumpIcon {
+	position: absolute;
+	left: 23px;
+	top: 20px;
+}
+
+#pumpText {
+	position: absolute;
+	left: 73px;
+	top: 28px;
+}
+
+/* APPLICATION PANEL */
+.appPanel {
+	position: absolute;
+	width: 272px;
+	height: 455px;
+	top: 0px;
+	left: 272px;
+	background-image: url(../Images/assets_dialog_dimm.png);
+}
+
+/* BLOOD GLUCOSE STYLES */
+
+
+/* INSULIN STYLES */
+
+#basalHeader {
+	margin: 0px auto;
+	width: 201px;
+	height: 39px;
+	top: 740px;
+	padding: 18px 0 0 45px;
+	background-image: url(../Images/overview_basal_bttn_up.png);
+	background-repeat: no-repeat;
+}
+
+#basalHeader:active {
+	background-image: url(../Images/overview_basal_bttn_down.png);
+}
+
+#bolusHeader {
+	margin: 0px auto;
+	width: 201px;
+	height: 39px;
+	top: 740px;
+	padding: 18px 0 0 45px;
+	background-image: url(../Images/overview_bolus_bttn_up.png);
+	background-repeat: no-repeat;
+}
+
+#bolusHeader:active {
+	background-image: url(../Images/overview_bolus_bttn_down.png);
+}
+
+.overviewPanel {
+	margin: 0px auto;
+	margin-top: -4px;
+	margin-bottom: 8px;
+	width: 246px;
+	height: 115px;
+	background-image: url(../Images/overview_panel.png);
+	background-repeat: no-repeat;
+}
+

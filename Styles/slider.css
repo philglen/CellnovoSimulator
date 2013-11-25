@@ -1,0 +1,157 @@
+
+.tripleSlider {
+	width: 246px;
+	margin: 0px auto;
+	background-image:url(../Images/tumbler_three_cols.png);
+	background-repeat: no-repeat;
+	height: 191px;
+	margin-top: 14px;	
+	overflow: hidden !important;
+}
+
+.tripleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+.tripleSlider div, .tripleSlider div ul, .tripleSlider div ul li {
+	border: none !important;
+}
+
+
+.singleSlider {
+	width: 67px;
+	margin: 0px auto;
+	background-image:url(../Images/basal_tumbler_narrow.png);
+	background-repeat: no-repeat;
+	height: 190px;
+	margin-top: 74px;	
+	overflow: hidden !important;
+}
+
+#tempBasalAdjust .singleSlider, #insulinToCarbRatio .singleSlider {
+	margin-top: 0px;
+}
+
+.singleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+.singleSlider div, .singleSlider div ul, .singleSlider div ul li {
+	border: none !important;
+}
+
+.wideSingleSlider {
+	margin: 0px auto;
+	background-image: url(../Images/settings_tumbler_single.png);
+	background-repeat: no-repeat;
+	width: 165px;
+	height: 189px;	
+	overflow: hidden !important;
+}
+.wideSingleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.wideSingleSlider div, .wideSingleSlider div ul, .wideSingleSlider div ul li {
+	border: none !important;
+}
+
+.wideDoubleSlider {
+	margin: 0px auto;
+	background-image: url(../Images/settings_tumbler_time.png);
+	background-repeat: no-repeat;
+	width: 243px;
+	height: 190px;	
+	overflow: hidden !important;
+}
+.wideDoubleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.wideDoubleSlider div, .wideDoubleSlider div ul, .wideDoubleSlider div ul li {
+	border: none !important;
+}
+
+.wideRightDoubleSlider {
+	margin: 0px auto;
+	background-image: url(../Images/bolus_tumbler_dual_phase.png);
+	background-repeat: no-repeat;
+	width: 245px;
+	height: 191px;	
+	overflow: hidden !important;
+}
+.wideRightDoubleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.wideRightDoubleSlider div, .wideRightDoubleSlider div ul, .wideRightDoubleSlider div ul li {
+	border: none !important;
+}
+
+
+
+.doubleSlider {
+	margin: 0px auto;
+	background-image: url(../Images/basal_tumbler_x2.png);
+	background-repeat: no-repeat;
+	width: 165px;
+	height: 189px;	
+	overflow: hidden !important;
+}
+.doubleSlider div ul li {
+	font-family: GothamSemiNarrow-Book;
+	font-size: 20px;
+	font-weight: bold;
+}
+.dwc {
+	margin: -18px 5px 10px -12px;	
+}
+.doubleSlider div, .doubleSlider div ul, .doubleSlider div ul li {
+	border: none !important;
+}
+.dwwc {
+	background: none !important;
+	padding: 0px;
+}
+.dwwl {
+	background: none !important;
+}
+.dwsc, .dww, .dwrc {
+	background: none !important;
+}
+.dwbg {
+	background: none !important;
+}
+.dwwo {
+	margin-top: 1px;
+	margin-left: -2px !important;
+	margin-right: 0 !important;
+	height: 184px !important;
+}
+
+.dw {
+	min-width: 0px !important;
+}
+
+.dwi {
+	margin: 0px;
+}
+
+.targetBGSlider {
+	margin-top: 40px;
+}
+
+.settingsSlider {
+	margin-top: 70px;
+}

@@ -1,0 +1,2067 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Cellnovo Emulator</title>
+<link rel="stylesheet" href="Styles/reset.css">
+<link rel="stylesheet" href="Styles/emulator.css">
+<link rel="stylesheet" href="Styles/emulatorLandscape.css">
+<link rel="stylesheet" href="Styles/typography.css">
+<link rel="stylesheet" type="text/css" href="Styles/mobiscroll-2.1.custom.min.css">
+<link rel="stylesheet" type="text/css" href="Styles/slider.css">
+<script type="text/javascript" src="Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="Scripts/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript" src="Scripts/scrollsync.js"></script>
+<script type="text/javascript" src="Scripts/dragscrollable.js"></script>
+<script type="text/javascript" src="Scripts/mobiscroll.core-2.1.js"></script>
+<script type="text/javascript" src="Scripts/jquery.stopwatch.js"></script>
+<script type="text/javascript" src="Scripts/date.format.js"></script>
+<script type="text/javascript" src="Scripts/functions.js"></script>
+<script type="text/javascript" src="Scripts/basalFunctions.js"></script>
+<script type="text/javascript" src="Scripts/activityFunctions.js"></script>
+<script type="text/javascript" src="Scripts/foodFunctions.js"></script>
+<script type="text/javascript" src="Scripts/bloodGlucoseFunctions.js"></script>
+<script type="text/javascript" src="Scripts/journalFunctions.js"></script>
+<script type="text/javascript" src="Scripts/bolusFunctions.js"></script>
+<script type="text/javascript" src="Scripts/settingsFunctions.js"></script>
+<script type="text/javascript" src="Scripts/keyboardFunctions.js"></script>
+<script type="text/javascript" src="Scripts/xmlFunctions.js"></script>
+</head>
+<body>
+<div id="handset">
+	<div id="screen">
+		<!-- STATUS BAR -->
+		<div id="statusBar">
+			<div id="statusPump"><img src="Images/assets_pumpbattery_insulin.png"></div>
+			<p id="statusTime"></p>
+            <div id="statusOptions">
+            	<div id="flightMode" class="hidden right"><img src="Images/icn_plane.png" /></div>
+                <div id="muteAlerts" class="hidden right"><img src="Images/icn_mute.png" /></div>
+            </div>
+            
+			<div id="statusBattery"><img src="Images/assets_battery.png"></div>
+		</div>
+		
+		<!-- UNLOCK PAGE -->
+		<div id="unlockpage">
+			<div id="cellnovo"><p>Cellnovo</p></div>
+			<div id="unlock"><img id="unlockImg" src="Images/security_hold_confirm_0.png"></div>
+			<div id="holdUnlock"><p>Hold to Unlock</p></div>
+		</div>
+
+		<!-- CONFIRM PAGE -->
+		<div id="confirmpage" class="hidden">
+        	<h1 id="confirmTitle"></h1>
+			<div id="confirmMessage"></div>
+			<div id="confirmDetails"></div>
+			<div id="confirm"><img id="confirmImg" src="Images/hold_confirm_0.png"></div>
+			<div id="holdConfirm">Hold to Confirm</div>
+			<!-- PROMPT BAR -->
+			<div class="promptBar">
+				<div class="promptButtons">
+					<div id="confirmBack" class="promptButton black bold">Back</div>
+				</div>
+			</div>
+		</div>
+		<!-- POPUP ALERT -->
+        <div id="alertPopup" class="alertPopup hidden">
+        	<h1 id="alertPopupTitle"></h1>
+			<div class="popupText" id="alertPopupText"></div>
+			<div class="promptBar">
+				<div class="popupButtons">
+					<div id="alertPopupYes" class="popupButton alertPopupButton black">Yes</div>
+				</div>
+			</div>
+		</div>
+		<!-- POPUP STANDARD -->
+		<div id="standardPopup" class="popup hidden">
+			<div class="popupIcon"><img name="standardPopupIcon" src="Images/popup_status_icon_question.png"></div>
+			<div class="popupTitle bold" id="popupTitle">Confirm Cancel</div>
+			<div class="popupText" id="popupText">All data input will be lost</div>
+			<div class="popupBar">
+				<div class="popupButtons">
+					<div id="standardPopupNo" class="popupButton left black">No</div>
+					<div id="standardPopupYes" class="popupButton right black">Yes</div>
+				</div>
+			</div>
+		</div>
+		<!-- POPUP JOURNAL -->
+        <div id="journalPopup" class="popup hidden">
+        	<div class="popupIcon"><img name="journalPopupIcon" src="Images/popup_status_icon_i.png"></div>
+			<div class="popupTitle bold" id="journalPopupTitle"></div>
+			<div class="popupDate" id="journalPopupDate"></div>
+            <div class="popupInfo hidden" id="journalBGInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalBGReading">Reading:</div>
+                    <div class="right"><span id="journalBGAmount"></span>u</div>
+                </div>
+                <div class="popupInfoText med">
+                	<div class="left" id="strJournalBGAssessment">Assessment:</div>
+                    <div class="right" id="journalBGRange"></div>
+                </div>
+                <div class="popupInfoText med">
+                	
+                    <div class="right" id="journalBGWellbeing"></div>
+                </div>
+                <div class="popupInfoText med">
+                    <div class="right" id="journalBGDiet"></div>
+                </div>
+                <div class="popupInfoText med">
+                	<div class="left" id="strJournalBGNote">Note:</div>
+                    <div class="right" id="journalBGNote"></div>
+                </div>
+            </div>
+            <div class="popupInfo hidden" id="journalTempBasalInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalTempBasalDuration">Duration:</div>
+                    <div class="right" id="journalTempBasalDuration"></div>
+                </div>
+                <div class="popupInfoText med">
+                	<div class="left" id="strJournalTempBasalAdjust">Adjust:</div>
+                    <div class="right" id="journalTempBasalAdjust"></div>
+                </div>
+            </div>
+            <div class="popupInfo hidden" id="journalBasalInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalBasalName">Name:</div>
+                    <div class="right" id="journalBasalName"></div>
+                </div>
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalBasalAmount">Amount:</div>
+                    <div class="right"><span id="journalBasalAmount"></span>u</div>
+                </div>
+            </div>
+            <div class="popupInfo hidden" id="journalBolusInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalBolusTotal">Total:</div>
+                    <div class="right"><span id="journalBolusTotal"></span>u</div>
+                </div>
+            	<div class="popupInfoText med">
+                	<div class="left" id="bolusDeliveryType"></span>:</div>
+                    <div class="right" id="journalBolusDelivery"></div>
+                </div>
+                <div class="popupInfoText med">
+                	<div class="left" id="strJournalBolusFood">Food:</div>
+                    <div class="right"><span id="journalBolusFood"></span>g</div>
+                </div>
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalBolusBG">BG:</div>
+                    <div class="right"><span id="journalBolusBG"></span>mmol/l</div>
+                </div>
+            </div>
+            <div class="popupInfo hidden" id="journalFoodInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalTotalCarbs">Total Carbs:</div>
+                    <div class="right"><span id="journalFoodTotalCarbs"></span> grams</div>
+                </div>
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalFoodItems">Items:</div>
+                    <div class="right"><span id="journalFoodItems"></span> items</div>
+                </div>
+            </div>
+            <div class="popupInfo hidden" id="journalActivityInfo">
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalActivityType">Type:</div>
+                    <div class="right"><span id="journalActivityType"></span></div>
+                </div>
+            	<div class="popupInfoText med">
+                	<div class="left" id="strJournalActivityDuration">Duration:</div>
+                    <div class="right" id="journalActivityDuration"></div>
+                </div>
+                <div class="popupInfoText med">
+                	<div class="left" id="strJournalActivityScore">Score:</div>
+                    <div class="right"><span id="journalActivityScore"></span></div>
+                </div>
+            </div>   
+			<div class="popupBar">
+				<div class="popupButtons">
+                	<div id="journalPopupHide" class="journalPopupButton black">Hide</div>
+				</div>
+			</div>	
+        </div>
+		<!-- HOME PAGE -->
+		<div id="homepage" class="hidden">
+			<div class="button" id="dashBG">
+				<div class="buttonIcon"><img src="Images/icn_dsh_bloodglucose.png"></div>
+				<div class="buttonTextTop"><span class="purple bold left" id="strDashBG">Blood Glucose</span><span class="purple bold right" id="dashBGValue">--.-</span></div>
+				<div class="buttonTextBottom"><span class="white med left"><span id="strDashBGReading">Reading: </span><span id="dashBGReading">--:--</span></span><span class="purple sml right">mmol/l</span></div>
+			</div>
+			<div class="button" id="dashInsulin">
+				<div class="buttonIcon"><img src="Images/icn_dsh_insulin.png"></div>
+				<div class="buttonTextTop"><span class="blue bold left" id="strDashInsulin">Insulin</span><span class="blue bold right" id="dashInsulinValue">--.--</span></div>
+				<div class="buttonTextBottom"><span class="white med left" id="dashInsulinProfileName">No Basal Profile</span><span class="blue sml right">u/hr</span></div>
+			</div>
+			<div class="button" id="dashFood">
+				<div class="buttonIcon"><img src="Images/icn_dsh_foodlibrary.png"></div>
+				<div class="buttonTextTop"><span class="yellow bold left" id="strDashFood">Food</span><span class="yellow bold right" id="dashFoodValue">---</span></div>
+				<div class="buttonTextBottom"><span class="white med left"><span id="strDashFoodRecorded">Recorded: </span><span id="dashFoodRecordedAt">--:--</span></span><span class="yellow sml right" id="strDashFoodGrams">grams</span></div>
+			</div>
+			<div class="button" id="dashActivity">
+				<div class="buttonIcon"><img src="Images/icn_dsh_activity.png"></div>
+				<div class="buttonTextTop"><span class="orange bold left" id="strDashActivity">Activity</span><span class="orange bold right" id="dashActiviityValue">--.-</span></div>
+				<div class="buttonTextBottom"><span class="white med left"><span id="strDashActivityTarget">Target: </span><span id="dashActivityTarget">1</span></span><span class="orange sml right" id="strDashFoodScore">score</span></div>
+			</div>
+			<div class="smlButton" id="dashJournal">
+				<div class="relative">
+					<div class="buttonIcon"><img src="Images/icn_dsh_journal.png"></div>
+					<div class="buttonTextTop"><span class="white bold left" id="strDashJournal">Journal</span></div>
+				</div>
+			</div>
+			<div class="smlButton" id="dashSettings">
+				<div class="relative">
+					<div class="buttonIcon"><img src="Images/icn_dsh_settings.png"></div>
+					<div class="buttonTextTop"><span class="green bold left" id="strDashSettings">Settings</span></div>
+				</div>
+			</div>
+			<div class="pumpButton">
+				<div id="pumpIcon"><img src="Images/assets_run_pump.png"></div>
+				<div id="pumpText" class="white">START PUMP</div>
+			</div>
+
+			<!-- BLOOD GLUCOSE PAGE //-->
+			<div id="bloodglucose" class="appPanel hidden">
+				<h1 id="strbloodglucose">Blood Glucose</h1>
+                <div class="topPromptBar"> 
+                    <div class="promptButtons">
+                        <div id="bloodGlucoseLast" class="promptButton purplePromptButton black bold">Last B.G.</div>
+                        <div id="bloodGlucoseAverages" class="promptButton black bold">Averages</div>
+                    </div>
+                </div>
+                <div id="bloodGlucoseLastPanel" class="bloodGlucoseReadingPanel">
+                	<div class="bloodGlucoseOverview" id="bloodGlucoseOverview">
+                    	<div class="bloodGlucoseValue purple bold" id="bloodGlucoseLastValue">--.-</div>
+                        <div class="bloodGlucoseUnits purple bold">mmol/l</div>
+                    </div>
+                    <div class="bloodGlucoseLastTaken white med"><span id="strBloodGlucoseLastTakenAt">Taken at</span> <span id="bloodGlucoseLastTime">--:--</span> <span id="bloodGlucoseLastDate">--/--/----</span></div>
+                	<div class="bgAssessmentPanel">
+                    	<div class="bgAssessmentItem hidden" id="bgOverviewInsideRange">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_inside_range.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewInsideRange">Inside Target Range</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewAboveRange">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_above_range.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewAboveRange">Outside Target Range (Higher)</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewBelowRange">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_below_range.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewBelowRange">Outside Target Range (Lower)</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewHyperglycaemic">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_hyper_range.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewHyperglycaemic">Above Hyperglycaemic Level</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewHypoglycaemic">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_hypo_range.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewHypoglycaemic">Below Hypoglycaemic Level</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewFeelingWell">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_feeling_well.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewFeelingWell">Feeling Well</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewFeelingUnwell">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_feeling_unwell.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewFeelingUnwell">Feeling Un-Well</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewPostMeal">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_post_meal.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewPostMeal">Post Meal</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewPreMeal">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_pre_meal.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewPreMeal">Pre Meal</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewFasting">
+                    		<div class="bgAssessmentIcon left"><img src="Images/bg_icn_fasting.png" /></div>
+                        	<div class="bgAssessmentText" id="strBGOverviewFasting">Fasting</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgOverviewNote">
+                        	<div class="bgAssessmentIcon left"><img src="Images/bg_icn_note.png" /></div>
+                        	<div class="bgAssessmentText"><span id="strBGOverviewNote">Note:</span> <span id="bgOverviewNoteText"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bloodGlucoseAveragesPanel" class="hidden">
+                	<div class="bloodGlucoseAverage">
+                    	<div class="left white bold">7 <span id="strBGAverages7Day">DAY</span></div>
+                        <div class="right bloodGlucoseAverageValue">
+                        	<div class="purple bold" id="bgAverageSevenDayValue">--.-</div>
+                            <div class="white med">mmol/l</div>
+                        </div>
+                    </div>
+                    <div class="bloodGlucoseAverage">
+                    	<div class="left white bold">30 <span id="strBGAverages30Day">DAY</span></div>
+                        <div class="right bloodGlucoseAverageValue">
+                        	<div class="purple bold" id="bgAverageThirtyDayValue">--.-</div>
+                            <div class="white med">mmol/l</div>
+                        </div>
+                    </div>
+                    <div class="bloodGlucoseAverage">
+                    	<div class="left white bold">90 <span id="strBGAverages90Day">DAY</span></div>
+                        <div class="right bloodGlucoseAverageValue">
+                        	<div class="purple bold" id="bgAverageNinetyDayValue">--.-</div>
+                            <div class="white med">mmol/l</div>
+                        </div>
+                    </div>
+                
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgOverviewBack" class="promptButton black bold">Back</div>
+						<!--<div id="bgOverviewControl" class="promptButton black bold">Control</div>-->
+                        <div class="userInputButton" id="bgReadingLow">3.1</div>
+                        <div class="userInputButton" id="bgReadingMed">6.5</div>
+                        <div class="userInputButton" id="bgReadingHigh">9.5</div>
+					</div>
+				</div>
+			</div>
+            <!-- BG READING TAKEN PAGE -->
+            <div id="bgReadingTaken" class="appPanel hidden">
+                <h1 id="strBGReadingTaken">Blood Glucose</h1>
+                <div id="bgReadingTakenPanel">
+                    <div id="bgReadingTakenTop" class="purple">
+                        <div class="horizontalDividerLeft"></div>
+                        <div id="measurementSuccessful">Measurement<br />Successful</div>
+                    </div>
+                    <div>
+                        <div class="horizontalDividerLeft"></div>
+                        <div class="bloodGlucoseOverview" id="bloodGlucoseReading">
+                            <div class="bloodGlucoseValue purple bold" id="bgReadingTakenValue">--.-</div>
+                            <div class="bloodGlucoseUnits purple bold">mmol/l</div>
+                        </div>
+                        <div class="bloodGlucoseLastTaken white med"><span id="strBGReadingTakenAt">Taken at</span> <span id="bgReadingTakenTime">--:--</span> <span id="bgReadingTakenDate">--/--/----</span></div>
+                    </div>
+                    <div class="horizontalDividerLeft"></div>
+                    <div id="bgReadingTakenBottom">
+                        
+                        <div id="bgInsideTargetRange" class="bgReadingItem hidden">
+                            <div class="left bgReadingTakenIcon">
+                                <img src="Images/bg_inside_icon.png" />
+                            </div>
+                            <div class="bgReadingTakenText" id="strBGInsideTargetRange">Inside Target<br />Range</div>
+                        </div>
+                        <div id="bgOutsideTargetRangeHigh" class="bgReadingItem hidden">
+                            <div class="left bgReadingTakenIcon">
+                                <img src="Images/bg_outside_high_icon.png" />
+                            </div>
+                            <div class="bgReadingTakenText" id="strBGOutsideTargetRangeHigh">Outside Target<br />Range (Higher)</div>
+                        </div>
+                        <div id="bgOutsideTargetRangeLow" class="bgReadingItem hidden">
+                            <div class="left bgReadingTakenIcon">
+                                <img src="Images/bg_outside_low_icon.png" />
+                            </div>
+                            <div class="bgReadingTakenText" id="strBGOutsideTargetRangeLow">Outside Target<br />Range (Lower)</div>
+                        </div>
+                        <div id="bgAboveHyperglycaemic" class="bgReadingItem hidden">
+                            <div class="left bgReadingTakenIcon">
+                                <img src="Images/bg_hyper_icon.png" />
+                            </div>
+                            <div class="bgReadingTakenText" id="strBGAboveHyperglycaemic">Above Hyperglycaemic<br />Limit</div>
+                        </div>
+                        <div id="bgBelowHypoglycaemic" class="bgReadingItem hidden">
+                            <div class="left bgReadingTakenIcon">
+                                <img src="Images/bg_hypo_icon.png" />
+                            </div>
+                            <div class="bgReadingTakenText" id="strBGBelowHypoglycaemic">Below Hypolycaemic<br />Limit</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgReadingTakenContinue" class="promptButton right black bold">Continue</div>
+					</div>
+				</div>
+            </div>
+            <!-- BLOOD GLUCOSE HEALTH ASSESSMENT PAGE -->
+            <div id="bgHealthAssessment" class="appPanel hidden">
+            	<h1 id="strHealthAssessment">Health Assessment</h1>
+                <div id="bgHealthAssessmentPanel">
+                	<div id="strBGHealthAssessmentSelect">Please select all that apply</div>
+                    <div id="bgWellBeingPanel">
+                        <div class="journalFilterItem">
+                            <div class="filterIcon"><img src="Images/bg_icn_feeling_well.png" /></div>
+                            <div class="filterItemName bold white" id="strBGHealthAssessmentFeelingWell">Feeling Well</div>
+                            <div class="wellbeingSelected wellbeingSelectedActive" id="wellbeingSelect-1"></div>
+                        </div>
+                        <div class="journalFilterItem">
+                            <div class="filterIcon"><img src="Images/bg_icn_feeling_unwell.png" /></div>
+                            <div class="filterItemName bold white" id="strBGHealthAssessmentFeelingUnwell">Feeling Unwell</div>
+                            <div class="wellbeingSelected" id="wellbeingSelect-2"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="journalFilterItem">
+                            <div class="filterIcon"><img src="Images/bg_icn_pre_meal.png" /></div>
+                            <div class="filterItemName bold white" id="strBGHealthAssessmentPreMeal">Pre-Meal</div>
+                            <div class="dietSelected dietSelectedActive" id="dietSelect-1"></div>
+                        </div>
+                        <div class="journalFilterItem">
+                            <div class="filterIcon"><img src="Images/bg_icn_post_meal.png" /></div>
+                            <div class="filterItemName bold white" id="strBGHealthAssessmentPostMeal">Post-Meal</div>
+                            <div class="dietSelected" id="dietSelect-2"></div>
+                        </div>
+                        <div class="journalFilterItem">
+                            <div class="filterIcon"><img src="Images/bg_icn_fasting.png" /></div>
+                            <div class="filterItemName bold white" id="strBGHealthAssessmentFasting">Fasting</div>
+                            <div class="dietSelected" id="dietSelect-3"></div>
+                        </div>
+                    </div>
+                    <div id="addNoteBttn">
+                    	<div id="addNoteIcon"></div>
+                        <div class="left">
+                        	<div id="strAddNoteBttn">Add Note</div>
+                            <div id="addNoteText"></div>
+                        </div>	
+                    </div>
+                </div>
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgHealthAssessmentContinue" class="promptButton right black bold">Continue</div>
+					</div>
+				</div>
+            </div>
+            <!-- Blood Glucose Reading Results -->
+            <div id="bgReadingResults" class="appPanel hidden">
+            	<h1 id="strBGReadingResults">BG Reading Results</h1>
+                <div class="bloodGlucoseReadingPanel">
+                	<div class="bloodGlucoseOverview" id="bloodGlucoseResultsOverview">
+                    	<div class="bloodGlucoseValue purple bold" id="bgResultsValue">--.-</div>
+                        <div class="bloodGlucoseUnits purple bold">mmol/l</div>
+                    </div>
+                    <div class="bloodGlucoseLastTaken white med"><span id="strBGReadingResultsTakenAt">Taken at</span> <span id="bgResultsTime">--:--</span> <span id="bgResultsDate">--/--/----</span></div>
+                	<div class="bgAssessmentPanel">
+                        <div class="bgAssessmentItem hidden" id="bgResultsInsideRange">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_inside_range.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsInsideRange">Inside Target Range</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsAboveRange">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_above_range.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsAboveRange">Outside Target Range (Higher)</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsBelowRange">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_below_range.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsBelowRange">Outside Target Range (Lower)</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsHyperglycaemic">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_hyper_range.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsHyperglycaemic">Above Hyperglycaemic Level</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsHypoglycaemic">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_hypo_range.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsHypoglycaemic">Below Hypoglycaemic Level</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsFeelingWell">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_feeling_well.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsFeelingWell">Feeling Well</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsFeelingUnwell">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_feeling_unwell.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsFeelingUnwell">Feeling Un-Well</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsPostMeal">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_post_meal.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsPostMeal">Post Meal</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsPreMeal">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_pre_meal.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsPreMeal">Pre Meal</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsFasting">
+                            <div class="bgAssessmentIcon left"><img src="Images/bg_icn_fasting.png" /></div>
+                            <div class="bgAssessmentText" id="strBGResultsFasting">Fasting</div>
+                        </div>
+                        <div class="bgAssessmentItem hidden" id="bgResultsNote">
+                        	<div class="bgAssessmentIcon left"><img src="Images/bg_icn_note.png" /></div>
+                        	<div class="bgAssessmentText"><span id="strBGResultsNote">Note:</span> <span id="bgResultsNoteText"></span></div>
+                        </div>
+                	</div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgReadingResultsBack" class="promptButton black bold">Back</div>
+						<div id="bgReadingResultsRecord" class="promptButton black bold">Record</div>
+                    </div>
+				</div>
+            
+            </div>
+            
+            <!-- BLOOD GLUCOSE CONTROL READING -->
+            <div id="bgControlReading" class="appPanel hidden">
+            	<div class="bgControlReadingPanel">
+                	<div class="bgControlReadingTitle bold purple">Control Solution Test</div>
+                    <div class="bgControlReadingInstructions">Please Insert<br />a Test Strip</div>
+                </div>
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgControlReadingBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+            
+            </div>
+				
+			<!-- INSULIN APP //-->
+			
+			<!-- Insulin Overview Page -->
+			<div id="insulin" class="appPanel hidden">
+				<h1 id="strInsulin">Insulin</h1>
+				<!-- BASAL OVERVIEW -->
+				<div id="basalHeader" class="black bold">BASAL</div>
+				<div id="basalOverview" class="overviewPanel relative">
+					<div class="overviewTextTop med"><div class="left"><span id="insulinBasalRate">---</span> u/hr</div><div class="right" id="insulinBasalProfileName"></div></div>
+					<div class="overviewTextMid blue clear"><img src="Images/overview_icn_temp_basal.png" /><span class="iconLabel" id="strInsulinTemporaryBasal"> Temporary Basal</span></div>
+					<div class="overviewTextBot med"><div class="left" id="strInsulinCommunicating">Communicating</div><div class="right" id="tempBasalStarted">--:--</div></div>
+				</div>
+
+				<!-- BOLUS OVERVIEW -->
+				<div id="bolusHeader" class="black bold">BOLUS</div>
+				<div id="bolusOverview" class="overviewPanel relative"> 
+					<div class="overviewTextTop med"><div class="left"><span id="bolusOverviewDeliveryValue">-.--</span> <span id="strBolusOverviewUnits">units</span></div><div class="right" id="bolusOverviewDeliveryTime">--:--</div></div>
+					<div class="overviewTextMid blue clear"><img src="Images/overview_icn_temp_basal.png"><span class="iconLabel" id="strBolusOverviewNotRunning">Not Running</span></div>
+				</div>
+				
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinOverviewBack" class="promptButton black bold">Back</div>
+						<div id="insulinOverviewPrime" class="promptButton black bold">Prime</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Basal List Page -->
+
+			<div id="basalList" class="appPanel hidden">
+				<h1 id="strBasalList">Basal</h1>
+                <div id="basalProfileListPanel">
+                	<div class="dragger">
+                        <div id="basalProfileList">
+                            <!-- LIST OF BASAL PROFILES -->
+                        </div>
+                    </div>
+                </div>
+				<div class="basalTempButton black bold" id="basalTempButton">Temporary Basal</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinBasalListBack" class="promptButton black bold">Back</div>
+						<div id="insulinBasalListCreate" class="promptButton black bold">Create</div>
+					</div>
+				</div>
+			</div>	
+
+			<!-- Basal Profile Home -->
+
+			<div id="basalProfileHome" class="appPanel hidden">
+				<h1 id="strBasalProfileHome">Basal</h1>
+				<div id="basalProfilePanel">
+					<div class="left med bold" id="basalProfileHomeName"></div>
+					<div class="right blue med bold" id="basalProfileHomeValue"></div>
+				</div>
+				<div class="basalGraph">
+					<div class="basalGraphTop"></div>
+					<div class="basalGraphBars">
+						<div class="basalGraphBar" id="basalGraphBar-1"></div>
+						<div class="basalGraphBar" id="basalGraphBar-2"></div>
+						<div class="basalGraphBar" id="basalGraphBar-3"></div>
+						<div class="basalGraphBar" id="basalGraphBar-4"></div>
+						<div class="basalGraphBar" id="basalGraphBar-5"></div>
+						<div class="basalGraphBar" id="basalGraphBar-6"></div>
+						<div class="basalGraphBar" id="basalGraphBar-7"></div>
+						<div class="basalGraphBar" id="basalGraphBar-8"></div>
+						<div class="basalGraphBar" id="basalGraphBar-9"></div>
+						<div class="basalGraphBar" id="basalGraphBar-10"></div>
+						<div class="basalGraphBar" id="basalGraphBar-11"></div>
+						<div class="basalGraphBar" id="basalGraphBar-12"></div>
+						<div class="basalGraphBar" id="basalGraphBar-13"></div>
+						<div class="basalGraphBar" id="basalGraphBar-14"></div>
+						<div class="basalGraphBar" id="basalGraphBar-15"></div>
+						<div class="basalGraphBar" id="basalGraphBar-16"></div>
+						<div class="basalGraphBar" id="basalGraphBar-17"></div>
+						<div class="basalGraphBar" id="basalGraphBar-18"></div>
+						<div class="basalGraphBar" id="basalGraphBar-19"></div>
+						<div class="basalGraphBar" id="basalGraphBar-20"></div>
+						<div class="basalGraphBar" id="basalGraphBar-21"></div>
+						<div class="basalGraphBar" id="basalGraphBar-22"></div>
+						<div class="basalGraphBar" id="basalGraphBar-23"></div>
+						<div class="basalGraphBar" id="basalGraphBar-24"></div>
+					</div>
+					<div class="basalGraphBottom"></div>
+				</div>
+				<div id="basalPreviewProfileBttn" class="basalProfileButton">Preview Profile</div>
+				<div id="basalCopyProfileBttn" class="basalProfileButton">Copy Profile</div>
+				<div id="basalEditProfileBttn" class="basalProfileButton">Edit Profile</div>
+				<div id="basalDeleteProfileBttn" class="basalProfileButton">Delete Profile</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinBasalProfileHomeBack" class="promptButton black bold">Back</div>
+						<div id="insulinBasalProfileHomeActivate" class="promptButton black bold">Activate</div>
+					</div>
+				</div>
+			</div>	
+
+			<!-- Basal Profile Preview -->
+
+			<div id="basalProfilePreview" class="appPanel hidden">
+				<h1><span id="basalPreviewProfileName"></span> - <span id="basalPreviewValue"></span>u</h1>
+				<div class="basalGraph">
+					<div class="basalGraphTop"></div>
+					<div class="basalGraphBars">
+						<div class="basalGraphBar" id="basalPreviewGraph-1"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-2"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-3"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-4"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-5"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-6"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-7"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-8"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-9"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-10"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-11"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-12"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-13"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-14"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-15"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-16"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-17"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-18"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-19"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-20"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-21"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-22"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-23"></div>
+						<div class="basalGraphBar" id="basalPreviewGraph-24"></div>
+					</div>
+					<div class="basalGraphBottom"></div>
+				</div>
+				<div class="basalPreviewButtons" id="basalPreviewButtons">
+					<div id="inner" style="position:relative; z-index: 10; margin: 0px auto; width: 254px; height: 268px; overflow: hidden;">
+						<div class="dragger">
+							<div id="basalPreviewBttn-1" class="basalPreviewButton"><div class="left">00:00 - 00:59</div><div class="right" id="basalPreviewValue-1">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-2" class="basalPreviewButton"><div class="left">01:00 - 01:59</div><div class="right" id="basalPreviewValue-2">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-3" class="basalPreviewButton"><div class="left">02:00 - 02:59</div><div class="right" id="basalPreviewValue-3">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-4" class="basalPreviewButton"><div class="left">03:00 - 03:59</div><div class="right" id="basalPreviewValue-4">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-5" class="basalPreviewButton"><div class="left">04:00 - 04:59</div><div class="right" id="basalPreviewValue-5">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-6" class="basalPreviewButton"><div class="left">05:00 - 05:59</div><div class="right" id="basalPreviewValue-6">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-7" class="basalPreviewButton"><div class="left">06:00 - 06:59</div><div class="right" id="basalPreviewValue-7">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-8" class="basalPreviewButton"><div class="left">07:00 - 07:59</div><div class="right" id="basalPreviewValue-8">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-9" class="basalPreviewButton"><div class="left">08:00 - 08:59</div><div class="right" id="basalPreviewValue-9">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-10" class="basalPreviewButton"><div class="left">09:00 - 09:59</div><div class="right" id="basalPreviewValue-10">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-11" class="basalPreviewButton"><div class="left">10:00 - 10:59</div><div class="right" id="basalPreviewValue-11">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-12" class="basalPreviewButton"><div class="left">11:00 - 11:59</div><div class="right" id="basalPreviewValue-12">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-13" class="basalPreviewButton"><div class="left">12:00 - 12:59</div><div class="right" id="basalPreviewValue-13">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-14" class="basalPreviewButton"><div class="left">13:00 - 13:59</div><div class="right" id="basalPreviewValue-14">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-15" class="basalPreviewButton"><div class="left">14:00 - 14:59</div><div class="right" id="basalPreviewValue-15">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-16" class="basalPreviewButton"><div class="left">15:00 - 15:59</div><div class="right" id="basalPreviewValue-16">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-17" class="basalPreviewButton"><div class="left">16:00 - 16:59</div><div class="right" id="basalPreviewValue-17">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-18" class="basalPreviewButton"><div class="left">17:00 - 17:59</div><div class="right" id="basalPreviewValue-18">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-19" class="basalPreviewButton"><div class="left">18:00 - 18:59</div><div class="right" id="basalPreviewValue-19">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-20" class="basalPreviewButton"><div class="left">19:00 - 19:59</div><div class="right" id="basalPreviewValue-20">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-21" class="basalPreviewButton"><div class="left">20:00 - 20:59</div><div class="right" id="basalPreviewValue-21">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-22" class="basalPreviewButton"><div class="left">21:00 - 21:59</div><div class="right" id="basalPreviewValue-22">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-23" class="basalPreviewButton"><div class="left">22:00 - 22:59</div><div class="right" id="basalPreviewValue-23">0.30 u/hr</div></div>
+							<div id="basalPreviewBttn-24" class="basalPreviewButton"><div class="left">23:00 - 23:59</div><div class="right" id="basalPreviewValue-24">0.30 u/hr</div></div>
+						</div>
+					</div>
+				</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinBasalPreviewBack" class="promptButton black bold">Back</div>
+						<div id="insulinBasalProfileNext" class="promptButton black bold">Next</div>
+					</div>
+				</div>
+			</div>
+            
+            <!-- Basal Profile Edit -->
+
+			<div id="basalProfileEdit" class="appPanel hidden">
+				<h1><span id="basalEditProfileName">Normal</span> - <span id="basalEditValue">7.20</span>u</h1>
+				<div class="basalGraph">
+					<div class="basalGraphTop"></div>
+					<div class="basalGraphBars">
+                    
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-1"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-2"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-3"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-4"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-5"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-6"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-7"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-8"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-9"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-10"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-11"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-12"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-13"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-14"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-15"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-16"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-17"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-18"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-19"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-20"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-21"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-22"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-23"></div>
+						<div class="basalGraphBar clickableBasalGraphBar" id="basalEditGraph-24"></div>
+					</div>
+					<div class="basalGraphBottom"></div>
+				</div>
+
+				<!-- TIME SELECTOR -->
+
+				<div class="basalTimeSelector">
+					<div id="basalTimePrev" class="basalTimePrev"></div>
+					<div id="basalTimeNext" class="basalTimeNext"></div>
+					<div class="basalTimeText" id="basalEditTime"><div id="basalTimeText">00:00 - 00:59</div></div>
+				</div>
+				
+				<div class="doubleSlider">
+					<input ID="editBasalRate" style="display: none;" />
+				</div>
+				<div class="unitsHour med">u/hr</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinBasalEditBack" class="promptButton black bold">Cancel</div>
+                        <div id="insulinBasalEditReview" class="promptButton black bold">Review</div>
+					</div>
+				</div>
+			</div>
+            <!-- TEMPORARY BASAL PAGE //-->
+            <div id="tempBasal" class="appPanel hidden">
+            	<h1 id="strTempBasal">Temporary Basal</h1>
+                <div id="tempBasalDuration" class="left">
+                	<div class="unitsHour" id="strTempBasalDuration">Duration</div>
+                    <div class="doubleSlider">
+                        <input ID="editTempBasalDuration" style="display: none;" />
+                    </div>
+                </div>
+                <div id="tempBasalAdjust" class="left">
+                	<div class="unitsHour" id="strTempBasalAdjust">Adjust</div>
+                    <div class="singleSlider">
+                        <input ID="editTempBasalAdjust" style="display: none;" />
+                    </div>
+                </div>
+                
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="tempBasalBack" class="promptButton black bold">Back</div>
+						<div id="tempBasalStart" class="promptButton black bold">Start</div>
+					</div>
+				</div>
+            </div>
+            
+            
+            <!-- BOLUS PAGE //-->
+            <div id="bolus" class="appPanel hidden">
+            	<h1 id="strBolus">Bolus</h1>
+                <div class="bolusOptionsPanel">
+                	<div class="bolusOption" id="bolusBG">
+                    	<div class="purple bold" id="strBolusBG">Blood Glucose</div>
+                        <div class="white" id="bolusBGValue">---</div>
+                        <div class="white"><span id="strBolusPredicted">Predicted</span> <span id="bolusBGPredicted">6.2</span>mmol/l</div>
+                        <div class="bolusChecked" id="bolusBGChecked"></div>
+                    </div>
+                    <div class="bolusOption" id="bolusFood">
+                    	<div class="yellow bold" id="strBolusFood">Food</div>
+                        <div class="white" id="bolusFoodUnits">---</div>
+                        <div class="bolusChecked" id="bolusFoodChecked"></div>
+                    </div>
+                    <div class="bolusOption" id="bolusRemaining">
+                    	<div class="blue bold" id="strBolusRemaining">Remaining Bolus</div>
+                        <div class="white"><span id="bolusRemainingUnits">--.-</span> <span id="strBolusRemainingUnits">Units</span></div>
+                        <div class="white"><span id="strBolusStarted">Started</span> <span id="bolusRemainingStarted">---</span></div>
+                        <div class="bolusChecked" id="bolusRemainingChecked"></div>
+                    </div>
+                </div>
+                <div class="bolusValuePanel">
+                	<div class="white bold" id="strBolusRecommendedBolus">Recommended Bolus</div>
+                    <div class="bolusValue bold blue"><span id="bolusValue">0.00</span> <span id="strBolusValueUnits">Units</span></div>
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bolusBack" class="promptButton black bold">Back</div>
+						<div id="bolusQuick" class="promptButton black bold">Quick</div>
+					</div>
+				</div>
+            </div>
+            <div id="quickBolus" class="appPanel hidden">
+            	<h1><span id="strQuickBolus">Bolus:</span> <span id="bolusDeliveryTypeText">Immediate</span></h1>
+                <div class="bolusDeliveryType left bolusPhase1Active" id="bolusPhase1"></div>
+                <div class="bolusDeliveryType left" id="bolusPhase2"></div>
+                <div class="bolusDeliveryType left" id="bolusPhase3"></div>
+                <div class="bolusDeliveryType left" id="bolusPhase4"></div>
+                <div class="clear"></div>
+                <div id="bolusPhase1Scroller">
+                    <div class="unitsDataBevel blue" id="strBolusPhase1Units">Units</div>
+                    <div class="doubleSlider">
+                        <input ID="editBolusDelivery1" style="display: none;" />
+                    </div>
+                </div>
+                <div id="bolusPhase2Scroller" class="hidden">
+                    <div class="unitsDataBevel blue" id="strBolusPhase2DeliveryPeriod">Delivery Period</div>
+                    <div class="wideDoubleSlider">
+                        <input ID="editBolusDelivery2" style="display: none;" />
+                    </div>
+                </div>
+                <div id="bolusPhase3Scroller" class="hidden">
+                    <div class="unitsDoubleBevel blue">
+                    	<div class="bolusBevelSmall left" id="strBolusPhase3PercentNow">% Now</div>
+                        <div class="bolusBevelLarge left" id="strBolusPhase360PercentOver">60% over</div>
+                    </div>
+                    <div class="wideRightDoubleSlider">
+                        <input ID="editBolusDelivery3" style="display: none;" />
+                    </div>
+                </div>
+                <div id="bolusPhase4Scroller" class="hidden">
+                    <div class="unitsDoubleBevel blue">
+                    	<div class="bolusBevelSmall left" id="strBolusPhase4PercentNow">% Now</div>
+                        <div class="bolusBevelLarge left" id="strBolusPhase440PercentOver">40% over</div>
+                    </div>
+                    <div class="wideRightDoubleSlider">
+                        <input ID="editBolusDelivery4" style="display: none;" />
+                    </div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="quickBolusBack" class="promptButton black bold">Back</div>
+						<div id="quickBolusDeliver" class="promptButton black bold">Deliver</div>
+					</div>
+				</div>
+            </div>
+            
+            <div id="selectInfusionSet" class="appPanel hidden">
+            	<h1>Select Infusion Set</h1>
+                <!-- PROMPT BAR -->
+            	<div class="promptBar">
+					<div class="promptButtons">
+						<div id="selectInfusionSetBack" class="promptButton black bold">Back</div>
+						<div id="selectInfusionSetPrime" class="promptButton black bold">Prime</div>
+					</div>
+				</div>
+            
+            </div>	
+				
+			<!-- FOOD PAGE //-->
+			<div id="food" class="appPanel hidden">
+				<h1 id="foodTitle">Food</h1>
+                <div id="foodHome">
+                    <div id="foodLibrary" class="foodListButton">
+                        <div class="foodListButtonIcon"><img src="Images/btn_food_icon.png"></div>
+                        <div class="buttonTextMiddle"><span class="white bold left" id="strFoodHomeFoodLibrary">Food Library</span></div>
+                    </div>
+                    <div class="med bold"><span id="strFoodHomeCarbohydrates">Carbohydrates:</span> <span class="yellow" id="strFoodHomeGrams">Grams</span></div> 
+                    <!-- SLIDER -->
+                    <div class="tripleSlider">
+                        <input ID="editFoodBolus" style="display: none;" />
+                    </div>
+               	</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="foodOverviewBack" class="promptButton black bold">Back</div>
+						<div id="foodOverviewBolus" class="promptButton black bold">Bolus</div>
+					</div>
+				</div>
+			</div>
+            <div id="foodList" class="appPanel hidden">
+				<h1 id="strFoodLibrary">Food Library</h1>
+                <div class="topPromptBar"> 
+                    <div class="promptButtons">
+                        <div id="foodFilter" class="promptButton yellowPromptButton black bold">Filter</div>
+                        <div id="foodAddFood" class="promptButton yellowPromptButton black bold">Add Food</div>
+                    </div>
+                </div>
+                <div id="foodItemPanel">
+                    <div id="foodItemList">
+                        <!-- LIST OF FOOD ITEMS -->
+                    </div>
+                </div>
+                <div class="itemNavigation hidden" id="foodItemNavigation">
+                	<div class="itemNavigationNext" id="foodItemNavigationNext"></div>
+                    <div class="itemNavigationPageNo" id="foodItemNavigationPageNo"></div>
+                    <div class="itemNavigationPrev" id="foodItemNavigationPrev"></div>
+                </div>
+                <!-- PROMPT BAR -->
+                <div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="foodListBack" class="promptButton black bold">Back</div>
+                        <div id="foodListCalculate" class="promptButton promptButtonDisabled black bold"><span id="strFoodListCalculate">Calculate</span> (<span id="foodItemCheckedCount">0</span>)</div>
+                    </div>
+                </div>
+			</div>
+            <!-- FOOD CALCULATE CARBOHYDRATES PAGE -->
+            <div id="foodCalculator" class="appPanel hidden">
+				<h1 id="strFoodCalculatorCalculateTotal">Calculate Total</h1>
+                <div class="foodCalculatorPanel">
+                	<div id="foodCalculatorList">
+                    </div>
+                    <div class="foodCalculatorTotalPanel">
+                        <div class="left bold white" id="strFoodCalculatorTotalCarbs">Total Carbs</div>
+                        <div class="right bold yellow"><span id="foodCalculatorTotal"></span>g</div>
+                    </div>
+                    <div id="foodCalculateBolus" class="calculateBolusBttn blue bold">Bolus Calculator</div>
+                </div>
+                
+                
+                <!-- PROMPT BAR -->
+                <div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="foodCalculatorBack" class="promptButton black bold">Back</div>
+                        <div id="foodCalculatorRecord" class="promptButton black bold">Record</div>
+                    </div>
+                </div>
+			</div>
+            
+            
+            <!-- FOOD FILTERS -->
+            <div id="foodFilterList" class="appPanel hidden">
+            	<h1 id="strFoodFilterList">Filter</h1> 
+            	<div class="filterPanel">
+                	<div class="foodFilterItem">
+                        <div class="filterItemName bold white" id="strFoodFilterAll">All</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-1"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_fav.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterFavourites">Favourites</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-2"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_breakfast.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterBreakfast">Breakfast</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-3"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_lunch.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterLunch">Lunch</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-4"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_dinner.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterDinner">Dinner</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-5"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_snack.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterSnack">Snack</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-6"></div>
+                    </div>
+                    <div class="foodFilterItem">
+                    	<div class="filterIcon"><img src="Images/food_icn_sml_filter_other.png" /></div>
+                        <div class="filterItemName bold white" id="strFoodFilterOther">Other</div>
+                        <div class="foodFilterSelected" id="foodFilterSelect-7"></div>
+                    </div>
+                </div>
+            	<div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="foodFilterBack" class="promptButton black bold">Back</div>
+                        <div id="foodFilterOk" class="promptButton black bold">OK</div>
+                    </div>
+                </div>
+            </div>
+            <!-- NEW FOOD ITEM PAGE -->
+			<div id="addFoodItem" class="appPanel hidden">
+				<h1 id="strAddFoodItem">Add New Food Item</h1>
+				<!-- PROMPT BAR -->
+                <div class="newFoodItem" id="newFoodItemName">
+					<div class="left med">
+                        <div class="white bold" id="strNewFoodItemName">Item Name</div>
+                        <div class="yellow bold" id="newFoodItemNameValue">New Food</div>
+                    </div>
+				</div>
+                <div class="newFoodItem" id="newFoodItemCarbohydrates">
+					<div class="left med">
+                        <div class="white bold" id="strNewFoodItemCarbohydrates">Carbohydrates</div>
+                        <div class="yellow bold"><span id="newFoodItemCarbohydrateValue">0</span> g</div>
+                    </div>
+				</div>
+                <div class="newFoodItem" id="newFoodItemFoodGroup">
+					<div class="left med">
+                        <div class="white bold" id="strNewFoodItemFoodGroup">Food Group</div>
+                        <div class="yellow bold" id="newFoodItemFoodGroupValue">None</div>
+                    </div>
+				</div>
+                <div class="newFoodItem" id="newFoodItemIsFavourite">
+					<div class="newFoodItemIsFavourite" id="newFoodItemIsFavouriteIcon"></div>
+                    <div class="buttonTextMiddle"><span class="white bold left med" id="strNewFoodItemFavourite">Favourite</span></div>
+				</div>
+                <div class="newFoodItem" id="newFoodItemDelete">
+					<div class="newFoodItemIDeleteIcon"></div>
+                    <div class="buttonTextMiddle"><span class="white bold left med" id="strNewFoodItemDelete">Delete</span></div>
+				</div>
+                
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="foodAddNewItemCancel" class="promptButton black bold">Cancel</div>
+                        <div id="foodAddNewItemSave" class="promptButton promptButtonDisabled black bold">Save</div>
+					</div>
+				</div>
+			</div>
+            <div id="foodCarbohydrates" class="appPanel hidden">
+				<h1 id="strFoodCarbohydrates">Carbohydrates Grams</h1>
+                <div class="unitsDataBevel yellow bold" id="strFoodCarbohydratesGrams">Grams</div>
+                <!-- SLIDER -->
+                <div class="tripleSlider">
+                    <input ID="editCarbohydrates" style="display: none;" />
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="editFoodCarbohydratesBack" class="promptButton black bold">Back</div>
+                        <div id="editFoodCarbohydratesSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+			</div>
+            
+            <div id="foodGroupList" class="appPanel hidden">
+				<h1 id="strSelectFoodGroup">Select Food Group</h1>
+                
+                <div class="foodGroupItem" id="foodGroupSelect-1">
+                    <div class="foodGroupIcon"><img src="Images/food_icn_sml_filter_breakfast.png" /></div>
+                    <div class="foodGroupName bold white" id="strFoodGroupItemBreakfast">Breakfast</div>
+                </div>
+                <div class="foodGroupItem" id="foodGroupSelect-2">
+                    <div class="foodGroupIcon"><img src="Images/food_icn_sml_filter_lunch.png" /></div>
+                    <div class="foodGroupName bold white" id="strFoodGroupItemLunch">Lunch</div>
+                </div>
+                <div class="foodGroupItem" id="foodGroupSelect-3">
+                    <div class="foodGroupIcon"><img src="Images/food_icn_sml_filter_dinner.png" /></div>
+                    <div class="foodGroupName bold white" id="strFoodGroupItemDinner">Dinner</div>
+                </div>
+                <div class="foodGroupItem" id="foodGroupSelect-4">
+                    <div class="foodGroupIcon"><img src="Images/food_icn_sml_filter_snack.png" /></div>
+                    <div class="foodGroupName bold white" id="strFoodGroupItemSnack">Snack</div>
+                </div>
+                <div class="foodGroupItem" id="foodGroupSelect-5">
+                    <div class="foodGroupIcon"><img src="Images/food_icn_sml_filter_other.png" /></div>
+                    <div class="foodGroupName bold white" id="strFoodGroupItemOther">Other</div>
+                </div>
+                
+                
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="editFoodGroupBack" class="promptButton black bold">Back</div>
+                        <div id="editFoodGroupSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+			</div>
+            
+			<!-- ACTIVITY PAGE //-->
+			<div id="activity" class="appPanel hidden">
+				<h1 id="strActivity">Activity</h1>
+                <div class="activityStatus">
+                	<div class="currentScorePanel">
+                    	<div class="white" id="strActivityCurrent">Current</div>
+                        <div class="orange bold activityStatusValue" id="currentScoreValue">-</div>
+                        <div class="white" id="strActivityCurrentScore">Score</div>
+                    </div>
+                    <div class="dailyAveragePanel">
+                    	<div class="white" id="strActivityDaily">Daily</div>
+                        <div class="orange bold activityStatusValue" id="dailyAverageValue">0</div>
+                        <div class="white" id="strActivityAverage">Average</div>
+                    </div>
+                    <div class="targetScorePanel">
+                    	<div class="white" id="strActivityTarget">Target</div>
+                        <div class="orange bold activityStatusValue" id="targetScoreValue">1</div>
+                        <div class="white" id="strActivityTargetScore">Score</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="activityGraph">
+                	<div class="activityGraphTop"></div>
+                    <div class="activityGraphMain">
+                    	<div class="activityGraphLeft"></div>
+                        <div class="activityGraphBars">
+                        	<div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-1"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-2"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-3"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-4"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-5"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-6"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-7"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-8"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-9"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-10"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-11"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-12"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-13"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-14"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-15"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-16"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-17"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-18"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-19"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-20"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-21"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-22"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-23"></div>
+                            <div class="activityGraphBar activityGraphBarDisabled" id="activityGraphBar-24"></div>
+                        </div>
+                    </div>
+                    <div class="activityGraphBottom"></div>
+                </div>
+                
+                
+                <div id="activityRecordActivity">Record Activity</div>
+                
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="activityOverviewBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+			</div>
+            <!-- RECORD ACTIVITY PAGE -->
+            <div id="recordActivity" class="appPanel hidden">
+				<h1 id="strRecordActivity">Select Activity</h1>
+                <div class="activityPanel">
+                	<div class="activitySelectPanel">
+                    	<div class="activitySelect">
+                        	<div class="activityIcon activityIconPlay" id="activitySelectIcon-1"></div>
+                            <div class="white med" id="strRecordActivityPlay">Play</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconSport" id="activitySelectIcon-2"></div>
+                            <div class="white med" id="strRecordActivitySport">Sport</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconWalk" id="activitySelectIcon-3"></div>
+                            <div class="white med" id="strRecordActivityWalk">Walk</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconGym" id="activitySelectIcon-4"></div>
+                            <div class="white med" id="strRecordActivityGym">Gym</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconCycle" id="activitySelectIcon-5"></div>
+                            <div class="white med" id="strRecordActivityCycle">Cycle</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconRow" id="activitySelectIcon-6"></div>
+                            <div class="white med" id="strRecordActivityRow">Row</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconRun" id="activitySelectIcon-7"></div>
+                            <div class="white med" id="strRecordActivityRun">Run</div>
+                        </div>
+                        <div class="activitySelect">
+                        	<div class="activityIcon activityIconSwim" id="activitySelectIcon-8"></div>
+                            <div class="white med" id="strRecordActivitySwim">Swim</div>
+                        </div>
+                    </div>
+                    <div id="activityTimer">00:00:00</div>
+                    <div id="activityStartTimer" class="activityStartTimer activityStartTimerDisabled">START</div>
+                </div>
+                
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="recordActivityBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+			</div>
+            <div id="activityComplete" class="appPanel hidden">
+            	<div id="activityCompletePanel">
+                	<div class="activityCompleteIcon hidden" id="activityCompletePlay"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteSport"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteWalk"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteGym"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteCycle"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteRow"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteRun"></div>
+                    <div class="activityCompleteIcon hidden" id="activityCompleteSwim"></div>
+                    <div id="activityCompleteStats">
+                    	<div id="activityCompleteType" class="activityCompleteText orange bold"></div>
+                        <div id="activityCompleteTime"></div>
+                        <div class="activityCompleteText orange bold"><span id="strActivityCompleteScore">Score</span> <span id="activityCompleteScore"></span></div>
+                    </div>
+                
+                </div>
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="activityCompleteDiscard" class="promptButton black bold">DISCARD</div>
+						<div id="activityCompleteRecord" class="promptButton black bold">RECORD</div>
+					</div>
+				</div>
+            
+            </div>
+            
+
+			<!-- JOURNAL PAGE //-->
+			<div id="journal" class="appPanel leftAppPanel hidden">
+				<h1 id="strJournal">Journal</h1>
+                <div id="journalPanel">
+                    <div id="journalList">
+                        <!-- LIST OF JOURNAL ITEMS -->
+                    </div>
+                </div>
+                
+                <div class="itemNavigation hidden" id="journalItemNavigation">
+                	<div class="itemNavigationNext" id="journalItemNavigationNext"></div>
+                    <div class="itemNavigationPageNo" id="journalItemNavigationPageNo"></div>
+                    <div class="itemNavigationPrev" id="journalItemNavigationPrev"></div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="journalOverviewBack" class="promptButton black bold">Back</div>
+						<div id="journalOverviewFilter" class="promptButton black bold">Filter</div>
+					</div>
+				</div>
+			</div>
+            
+            <!-- JOURNAL FILTER //-->
+            <div id="journalFilterList" class="appPanel hidden">
+            	<h1 id="strJournalFilter">Filter Journal</h1> 
+            	<div class="filterPanel">
+                	<div class="journalFilterItem">
+                        <div class="filterItemName bold white" id="strJournalFilterAll">All</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-1"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_bg.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterBG">Blood Glucose</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-2"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_basal.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterBasal">Basal Profile</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-3"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_temp_basal.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterTempBasal">Temporary Basal</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-4"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_bolus.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterBolus">Bolus</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-5"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_food.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterFood">Food</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-6"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_activity.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterActivity">Activity</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-7"></div>
+                    </div>
+                    <div class="journalFilterItem">
+                    	<div class="filterIcon"><img src="Images/journal_filter_icon_events.png" /></div>
+                        <div class="filterItemName bold white" id="strJournalFilterEvents">Events</div>
+                        <div class="journalFilterSelected" id="journalFilterSelect-8"></div>
+                    </div>
+                </div>
+            	<div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="journalFilterBack" class="promptButton black bold">Back</div>
+                        <div id="journalFilterOk" class="promptButton black bold">OK</div>
+                    </div>
+                </div>
+            </div>
+
+			<!-- SETTINGS PAGE //-->
+			<div id="settings" class="appPanel hidden">
+				<h1 id="strSettings">Settings</h1>
+                <div class="settingsCheckItem">
+                    <div class="filterIcon"><img src="Images/settings_icn_mute.png" /></div>
+                    <div class="settingsItemName bold white" id="strSettingsMuteAlerts">Mute Alerts</div>
+                    <div class="settingsCheckSelected" id="settingsCheckMuteAlerts"></div>
+                </div>
+                <div class="settingsCheckItem">
+                    <div class="filterIcon"><img src="Images/settings_icn_flight_mode.png" /></div>
+                    <div class="settingsItemName bold white" id="strSettingsFlightSafeMode">Flight Safe Mode</div>
+                    <div class="settingsCheckSelected" id="settingsCheckFlightSafeMode"></div>
+                </div>
+                <div class="settingsButton" id="settingPumpBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_pump.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strSettingsPump">Pump</span></div>
+                </div>
+                <div class="settingsButton" id="settingsHandsetBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_handset.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strSettingsHandset">Handset</span></div>
+                </div>
+                <div class="settingsButton" id="settingsApplicationBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_application.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strSettingsApplication">Application</span></div>
+                </div>
+                
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="settingsOverviewBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+			</div>            
+            <!-- PUMP SETTINGS -->
+            <div id="pumpSettings" class="appPanel hidden">
+				<h1 id="strPumpSettings">Pump Settings</h1>
+                <div id="pumpList">
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="pumpSettingsBack" class="promptButton black bold">Back</div>
+                        <div id="pumpSettingsAdd" class="promptButton black bold">Add</div>
+					</div>
+				</div>
+			</div>
+            <div id="pumpFound" class="appPanel hidden">
+				<h1 class="strPumpFoundSuccess">Success</h1>
+                <div class="pumpFound green bold" id="strPumpFound">Pump Found</div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="pumpFoundBack" class="promptButton black bold">Back</div>
+                        <div id="pumpFoundSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+			</div>
+            <div id="pumpDetail" class="appPanel hidden">
+				<h1 id="strPumpDetail">Pump Detail</h1>
+                <div class="pumpDetails">
+                	<div id="pumpName"></div>
+                    <div class="green med" id="isPumpActivated"></div>
+                </div>
+                <div class="pumpDetails">
+                	<div class="left" id="strPumpDetailReservoirLevel">Reservoir Level</div>
+                    <div class="right green">100%</div>
+                </div>
+                <div class="pumpDetails">
+                	<div class="left" id="strPumpDetailBatteryLevel">Battery Level</div>
+                    <div class="right green">100%</div>
+                </div>
+                <div class="pumpDetails">
+                	<div class="left" id="strPumpDetailSoftwareVersion">Software Version</div>
+                    <div class="right green">8248:8246</div>
+                </div>
+                <div class="existingBasal" id="testPumpAlarmBttn">
+                	<div class="existingBasalTextTop bold" id="strPumpDetailTestAlarm">Test Alarm</div>
+                </div>
+                <div class="existingBasal"id="pumpNameEditBttn">
+                	<div class="existingBasalTextTop bold" id="strPumpDetailEditName">Edit Name</div>
+					<div class="existingBasalTextBot green" id="pumpNameEdit"></div>
+                </div>
+                <div class="existingBasal"id="pumpRemoveBttn">
+                	<div class="existingBasalTextTop bold" id="strPumpDetailRemove">Remove</div>
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="pumpDetailBack" class="promptButton black bold">Back</div>
+                        <div id="pumpDetailActivate" class="promptButton black bold">Activate</div>
+					</div>
+				</div>
+			</div>
+            <!-- HANDSET SETTINGS -->
+            <div id="handsetSettings" class="appPanel hidden">
+				<h1 id="strHandsetSettings">Handset Settings</h1>
+                <div class="smallHandsetButtons">
+                    <div class="handsetSettingsButtonSml" id="handsetBrightnessBttn">
+                        <div class="handsetButtonTextTop bold white" id="strHandsetSettingsBrightness">Brightness</div>
+                        <div class="green"><span id="handsetBrightnessValue">50</span>%</div>
+                    </div>
+                    <div class="handsetSettingsButtonSml" id="handsetAlarmTestBttn">
+                    	<div class="buttonTextMiddle bold white" id="strHandsetSettingsAlarmTest">Alarm Test</div>
+                	</div>
+                </div>                
+                <div class="handsetSettingsButtonLg" id="handsetDateTimeBttn">
+                	<div class="handsetButtonTextTop bold white" id="strHandsetSettingsDateAndTime">Date and Time</div>
+                    <div class="green" id="handsetDateTimeValue"></div>
+                </div>
+                <div class="handsetSettingsButtonLg" id="handsetNameBttn">
+                	<div class="handsetButtonTextTop bold white" id="strHandsetSettingsHandsetName">Handset Name</div>
+                    <div class="green" id="handsetNameValue">Cellnovo</div>
+                </div>
+                <div class="handsetSettingsButtonLg" id="handsetLanguageBttn">
+                	<div class="handsetButtonTextTop bold white" id="strHandsetSettingsLanguage">Language</div>
+                    <div class="green">English (UK)</div>
+                </div>
+                <div class="smallHandsetButtons">
+                    <div class="handsetSettingsButtonSml" id="handsetInformationBttn">
+                    	<div class="buttonTextMiddle bold white" id="strHandsetSettingsInformation">Information</div>
+                    </div>
+                    <div class="handsetSettingsButtonSml" id="handsetSubscriptionBttn">
+                    	<div class="buttonTextMiddle bold white" id="strHandsetSettingsSubscription">Subscription</div>
+                	</div>
+                </div>  
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="handsetSettingsBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+			</div>
+            <!-- APPLICATION SETTINGS -->
+            <div id="applicationSettings" class="appPanel hidden">
+				<h1 id="strApplicationSettings">Application Settings</h1>
+                <div class="applicationSettingsButton" id="applicationBGBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_activity_settings.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strApplicationSettingsBG">Blood Glucose</span></div>
+                </div>
+                <div class="applicationSettingsButton" id="applicationInsulinBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_insulin_settings.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strApplicationSettingsInsulin">Insulin</span></div>
+                </div>
+                <div class="applicationSettingsButton" id="applicationActivityBttn">
+                	<div class="settingsButtonIcon"><img src="Images/settings_icn_bg_settings.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold" id="strApplicationSettingsActivity">Activity</span></div>
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="applicationSettingsBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+			</div>
+            
+            <!-- BRIGHTNESS SETTINGS -->
+            <div id="brightness" class="appPanel hidden">
+            	<h1 id="strBrightness">Brightness</h1>
+                <div class="singleSlider">
+                    <input ID="editBrightness" style="display: none;" />
+                </div>
+                <div class="unitsHour med">%</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="brightnessBack" class="promptButton black bold">Back</div>
+                        <div id="brightnessSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            
+            <!-- DATE / TIME SETTINGS -->
+            <div id="dateTime" class="appPanel hidden">
+				<h1 id="strDateTime">Set Date &amp; Time</h1>
+                <div class="topPromptBar"> 
+                    <div class="promptButtons">
+                        <div id="dateTimeEditDate" class="promptButton greenPromptButton black bold">Date</div>
+                        <div id="dateTimeEditTime" class="promptButton black bold">Time</div>
+                    </div>
+                </div>
+                
+                <div id="editHandsetDate">
+                    <div class="tripleSlider">
+                    	<input ID="editDate" style="display: none;" />
+                	</div>
+                </div>
+                <div id="editHandsetTime" class="hidden">
+                	<div class="doubleSlider">
+                    	<input ID="editTime" style="display: none;" />
+                	</div>
+                </div>
+                <!-- PROMPT BAR -->
+                <div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="dateTimeBack" class="promptButton black bold">Back</div>
+                        <div id="dateTimeSave" class="promptButton black bold">Save</div>
+                    </div>
+                </div>
+			</div>
+            
+			<!-- LANGUAGE SETTINGS -->
+            <div id="language" class="appPanel hidden">
+				<h1 id="strLanguage">Language</h1>
+                <div class="languageButton languageButtonActive" id="languageEnglishBttn">
+                	<div class="languageIcon"><img src="Images/settings_british_flag.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold">English</div>
+                    <div class="languageCheck" id="languageEnglish"></div>
+                </div>
+                <div class="languageButton" id="languageDutchBttn">
+                	<div class="languageIcon"><img src="Images/settings_dutch_flag.png" /></div>
+                    <div class="buttonTextMiddle"><span class="white bold">Nederlands</div>
+                    <div class="languageCheck" id="languageDutch"></div>
+                </div>
+				<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="languageBack" class="promptButton black bold">Back</div>
+                        <div id="languageNext" class="promptButton black bold">Next</div>
+					</div>
+				</div>
+			</div>
+            
+            <!-- HANDSET INFORMATION -->
+            <div id="information" class="appPanel hidden">
+            	<h1 id="strInformation">Information</h1>
+                <div class="informationPanel">
+                	<div class="informationItem">
+                    	<div class="white bold" id="strInformationSIM">SIM</div>
+                        <div class="green">XXXXXXXXXXXXXXXXXXXX</div>
+                    	<div class="horizontalDividerLeft"></div>
+                    </div>
+                    <div class="informationItem">
+                    	<div class="white bold" id="strInformationBGMeasurementUnit">BG Measurement Unit</div>
+                        <div class="green">mmol/l</div>                        
+                    	<div class="horizontalDividerLeft"></div>
+                    </div>
+                    <div class="informationItem">
+                    	<div class="white bold" id="strInformationCustomerSupport">Customer Support</div>
+                        <div class="green">support@cellnovo.com</div>
+                        <div class="horizontalDividerLeft"></div>
+                    </div>
+                    <div class="informationItem">
+                    	<div class="white bold" id="strInformationSoftwareVersion">Software Version</div>
+                        <div class="green">7736++ 13313</div>
+                    </div>
+                </div>
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="informationBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+            </div>
+            <!-- APPLICATION BLOOD GLUCOSE -->
+            <div id="applicationBG" class="appPanel hidden">
+            	<h1 id="strApplicationBG">Blood Glucose Settings</h1>
+                <div class="handsetSettingsButtonLg" id="applicationTargetBGBttn">
+                	<div class="handsetButtonTextTop bold white" id="strApplicationBGTargetBGRange">Target BG Range</div>
+                    <div class="purple"><span id="applicationTargetBGLowValue">4.5</span> mmol/l to <span id="applicationTargetBGHighValue">8.0</span> mmol/l</div>
+                </div>
+                <div class="handsetSettingsButtonLg" id="applicationHyperglycaemiaBttn">
+                	<div class="handsetButtonTextTop bold white" id="strApplicationBGHyperglycaemiaLimit">Hyperglycaemia Limit</div>
+                    <div class="purple"><span id="applicationHyperglycaemiaValue">14.0</span> mmol/l</div>
+                </div>
+                <div class="handsetSettingsButtonLg" id="applicationHypoglycaemiaBttn">
+                	<div class="handsetButtonTextTop bold white" id="strApplicationBGHypoglycaemiaLimit">Hypoglycaemia Limit</div>
+                    <div class="purple"><span id="applicationHypoglycaemiaValue">3.4</span> mmol/l</div>
+                </div>
+                <div class="handsetSettingsButtonLg" id="applicationBGReadingValidForBttn">
+                	<div class="handsetButtonTextTop bold white" id="strApplicationBGBGReadingValidFor">B.G. Reading Valid For</div>
+                    <div class="purple"><span id="applicationBGReadingValidForValue">15</span> Minutes</div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="applicationBGBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+            </div>
+            <!-- TARGET BG RANGE PAGE -->
+            <div id="targetBGRange" class="appPanel hidden">
+            	<h1 id="strTargetBGRange">Target BG Range</h1>
+                <div class="topPromptBar"> 
+                    <div class="promptButtons">
+                        <div id="targetBGRangeEditLow" class="promptButton purplePromptButton black bold">Low</div>
+                        <div id="targetBGRangeEditHigh" class="promptButton black bold">High</div>
+                    </div>
+                </div>
+                
+                <div id="applicationTargetBGLow">
+                	<div class="unitsDataBevel purple">mmol/l</div>
+                    <div class="doubleSlider targetBGSlider">
+                    	<input ID="editTargetBGLow" style="display: none;" />
+                	</div>
+                </div>
+                <div id="applicationTargetBGHigh" class="hidden">
+                	<div class="unitsDataBevel purple">mmol/l</div>
+                	<div class="doubleSlider targetBGSlider">
+                    	<input ID="editTargetBGHigh" style="display: none;" />
+                	</div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="targetBGRangeBack" class="promptButton black bold">Back</div>
+                        <div id="targetBGRangeSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- HYPERGLYCAEMIA LIMIT PAGE -->
+            <div id="hyperglycaemiaLimit" class="appPanel hidden">
+            	<h1 id="strHyperglycaemiaLimit">Hyperglycaemia Limit</h1>
+                <div class="doubleSlider settingsSlider">
+                    <input ID="editHyperglycaemia" style="display: none;" />
+                </div>
+                <div class="unitsHour med">mmol/l</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="hyperglycaemiaLimitBack" class="promptButton black bold">Back</div>
+                        <div id="hyperglycaemiaLimitSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- HYPOGLYCAEMIA LIMIT PAGE -->
+            <div id="hypoglycaemiaLimit" class="appPanel hidden">
+            	<h1 id="strHypoglycaemiaLimit">Hypoglycaemia Limit</h1>
+                <div class="doubleSlider settingsSlider">
+                    <input ID="editHypoglycaemia" style="display: none;" />
+                </div>
+                <div class="unitsHour med">mmol/l</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="hypoglycaemiaLimitBack" class="promptButton black bold">Back</div>
+                        <div id="hypoglycaemiaLimitSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- BG READING VALID FOR PAGE -->
+            <div id="bgReadingValidFor" class="appPanel hidden">
+            	<h1 id="strBGReadingValidFor">B.G. Reading Valid For:</h1>
+                <div class="singleSlider">
+                    <input ID="editBGReadingValidFor" style="display: none;" />
+                </div>
+                <div class="unitsHour med" id="strBGReadingValidForMinutes">Minutes</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgReadingValidForBack" class="promptButton black bold">Back</div>
+                        <div id="bgReadingValidForSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- APPLICATION INSULIN SETTINGS PAGE -->
+            <div id="applicationInsulin" class="appPanel hidden">
+            	<h1 id="strApplicationInsulin">Insulin</h1>
+                <div class="insulinSettingsButtonLg bold" id="bgCorrectionRatioBttn">B.G. Correction Ratio</div>
+                <div class="insulinSettingsButtonLg bold" id="insulinToCarbRatioBttn">Insulin to Carb Ratio</div>
+                <div class="insulinSettingsButtonSml" id="maxBasalRateBttn">
+                	<div class="left bold" class="strApplicationInsulinMaxBasalRate">Max Basal Rate</div>
+                    <div class="right blue"><span id="maxBasalRateValue">1.5</span> u/hr</div>
+                </div>
+                <div class="insulinSettingsButtonSml" id="maxBolusBttn">
+                	<div class="left bold" id="strApplicationInsulinMaxBolus">Max Bolus</div>
+                    <div class="right blue"><span id="maxBolusValue">10</span> u</div>
+                </div>
+                <div class="insulinSettingsButtonSml" id="timeToTargetBttn">
+                	<div class="left bold" id="strApplicationInsulinTimeToTarget">Time to Target</div>
+                    <div class="right blue"><span id="timeToTargetValue">210</span> <span id="strApplicationInsulinTimeToTargetMinutes">Minutes</span></div>
+                </div>
+                <div class="insulinSettingsButtonSml" id="lowReservoirAlertBttn">
+                	<div class="left bold" id="strApplicationInsulinLowReservoirAlert">Low Reservoir Alert</div>
+                    <div class="right blue"><span id="lowReservoirAlertValue">20</span> u</div>
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="applicationInsulinBack" class="promptButton black bold">Back</div>
+					</div>
+				</div>
+            </div>
+            <!-- BG CORRECTION RATIO PAGE -->
+            <div id="bgCorrectionRatio" class="appPanel hidden">
+            	<h1 id="strBGCorrectionRatio">B.G. Correction Ratio</h1>
+                <div class="basalGraph">
+					<div class="basalGraphTop"></div>
+					<div class="basalGraphBars">
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-1"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-2"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-3"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-4"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-5"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-6"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-7"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-8"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-9"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-10"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-11"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-12"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-13"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-14"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-15"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-16"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-17"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-18"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-19"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-20"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-21"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-22"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-23"></div>
+						<div class="basalGraphBar clickableBGCorrectionGraphBar" id="bgCorrectionGraph-24"></div>
+					</div>
+					<div class="basalGraphBottom"></div>
+				</div>
+
+				<!-- TIME SELECTOR -->
+
+				<div class="basalTimeSelector">
+					<div id="bgCorrectionTimePrev" class="basalTimePrev"></div>
+					<div id="bgCorrectionTimeNext" class="basalTimeNext"></div>
+					<div class="basalTimeText" id="bgCorrectionEditTime"><div id="bgCorrectionTimeText">00:00 - 00:59</div></div>
+				</div>
+				
+				<div class="wideSingleSlider settingsSlider">
+					<input ID="editBGCorrectionRatio" style="display: none;" />
+				</div>
+				<div class="unitsHour med">1 u : <span id="bgCorrectionValue">3.0</span> mmol/l</div>
+                
+                
+                
+            	<!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="bgCorrectionRatioBack" class="promptButton black bold">Back</div>
+                        <div id="bgCorrectionRatioSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- INSULIN TO CARB RATIO PAGE -->
+            <div id="insulinToCarbRatio" class="appPanel hidden">
+            	<h1 id="strInsulinToCarbRatio">Insulin to Carb Ratio</h1>
+                
+                <div class="basalGraph">
+					<div class="basalGraphTop"></div>
+					<div class="basalGraphBars">
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-1"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-2"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-3"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-4"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-5"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-6"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-7"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-8"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-9"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-10"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-11"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-12"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-13"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-14"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-15"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-16"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-17"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-18"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-19"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-20"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-21"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-22"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-23"></div>
+						<div class="basalGraphBar clickableInsulinToCarbGraphBar" id="insulinToCarbGraph-24"></div>
+					</div>
+					<div class="basalGraphBottom"></div>
+				</div>
+
+				<!-- TIME SELECTOR -->
+
+				<div class="basalTimeSelector">
+					<div id="insulinToCarbTimePrev" class="basalTimePrev"></div>
+					<div id="insulinToCarbTimeNext" class="basalTimeNext"></div>
+					<div class="basalTimeText" id="insulinToCarbEditTime"><div id="insulinToCarbTimeText">00:00 - 00:59</div></div>
+				</div>
+				<div id="insulinToCarbSliderContainer">
+                    <div class="singleSlider left">
+                        <input ID="editInsulinToCarbUnits" style="display: none;" />
+                    </div>
+                    <div class="sliderVerticalDivider bold left">:</div>
+                    <div class="singleSlider left">
+                        <input ID="editInsulinToCarbGrams" style="display: none;" />
+                    </div>
+                    <div class="clear"></div>
+                    <div class="insulinToCarbsUnits left med" id="strInsulinToCarbRatioUnits">Units</div>
+                    <div class="insulinToCarbsUnits right med" id="strInsulinToCarbRatioGrams">Grams</div>
+               </div> 
+                
+                
+                
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="insulinToCarbRatioBack" class="promptButton black bold">Back</div>
+						<div id="insulinToCarbRatioSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- MAXIMUM BASAL RATE PAGE -->
+            <div id="maxBasalRate" class="appPanel hidden">
+            	<h1 id="strMaxBasalRate">Maximum Basal Rate</h1>
+                <div class="doubleSlider settingsSlider">
+                    <input ID="editMaxBasalRate" style="display: none;" />
+                </div>
+                <div class="unitsHour med">u/hr</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="maxBasalRateBack" class="promptButton black bold">Back</div>
+						<div id="maxBasalRateSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- MAXIMUM BOLUS PAGE -->
+            <div id="maxBolus" class="appPanel hidden">
+            	<h1 id="strMaxBolus">Maximum Bolus</h1>
+                <div class="doubleSlider settingsSlider">
+                    <input ID="editMaxBolus" style="display: none;" />
+                </div>
+                <div class="unitsHour med" id="strMaxBolusUnits">Units</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="maxBolusBack" class="promptButton black bold">Back</div>
+						<div id="maxBolusSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- TIME TO TARGET PAGE -->
+            <div id="timeToTarget" class="appPanel hidden">
+            	<h1 id="strTimeToTarget">Time to Target</h1>
+                <div class="wideSingleSlider settingsSlider">
+                	<input ID="editTimeToTarget" style="display: none;" />
+                </div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="timeToTargetBack" class="promptButton black bold">Back</div>
+						<div id="timeToTargetSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <!-- LOW RESERVOIR ALERT PAGE -->
+            <div id="lowReservoirAlert" class="appPanel hidden">
+            	<h1 id="strLowReservoirAlert">Low Reservoir Alert</h1>
+                <div class="singleSlider">
+                    <input ID="editLowReservoirAlert" style="display: none;" />
+                </div>
+                <div class="unitsHour med" id="strLowReservoirAlertUnits">Units</div>
+                <!-- PROMPT BAR -->
+				<div class="promptBar">
+					<div class="promptButtons">
+						<div id="lowReservoirAlertBack" class="promptButton black bold">Back</div>
+						<div id="lowReservoirAlertSave" class="promptButton black bold">Save</div>
+					</div>
+				</div>
+            </div>
+            <div id="applicationActivity" class="appPanel hidden">
+            	<h1 id="strApplicationActivity">Activity Settings</h1>
+                <div id="targetActivityScoreBttn" class="insulinSettingsButtonLg">
+                    <div class="left white bold" id="strApplicationActivityTargetScore">Target Score</div>
+                    <div class="right orange" id="activityTargetScoreValue">1</div>
+                </div>
+                <!-- PROMPT BAR -->
+                <div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="applicationActivityBack" class="promptButton black bold">Back</div>
+                    </div>
+                </div>                
+            </div>
+            <div id="targetActivityScore" class="appPanel hidden">
+            	<h1 id="strTargetActivityScore">Set Target Activity Score</h1>
+                <div class="tripleSlider">
+                    <input ID="editTargetScore" style="display: none;" />
+                </div>
+                
+                <!-- PROMPT BAR -->
+                <div class="promptBar">
+                    <div class="promptButtons">
+                        <div id="targetActivityScoreBack" class="promptButton black bold">Back</div>
+                        <div id="targetActivityScoreSave" class="promptButton black bold">Save</div>
+                    </div>
+                </div>                
+            </div>
+		</div>
+        
+	</div>
+
+
+<div id="handsetLandscape" class="hidden">
+	<div id="screenLandscape">
+		<!-- STATUS BAR -->
+		<div id="statusBarLandscape">
+			<div id="statusPump"><img src="Images/assets_pumpbattery_insulin.png"></div>
+			<p id="statusTime"></p>
+			<div id="statusBattery"><img src="Images/assets_battery.png"></div>
+		</div>
+        <div id="keyboardError" class="hidden">
+        	<div id="keyboardErrorIcon"><img src="Images/popup_status_icon_error_red_cross.png" /></div>
+            <div id="keyboardErrorText"></div>
+            <div id="keyboardErrorOk">OK</div>
+        </div>
+		<div id="keyboardContainer">
+            <div class="keyboardTitle">Profile Name:</div>
+        
+            <div class="keyboardReadout"><p class="caption"></p><p class="cursor">|</p></div>
+            <div class="backspace" onClick="backspace()"></div>
+        
+            <div class="keyboard">
+                <div class="lower">
+                    <img src="Images/keyboard_lowercase.png" usemap="#MapLower">
+                    <map name="MapLower">
+                        <area shape="rect" coords="14,4,53,36" href="javascript:keyboardPress('q')">
+                        <area shape="rect" coords="59,4,99,36" href="javascript:keyboardPress('w')">
+                        <area shape="rect" coords="105,4,145,36" href="javascript:keyboardPress('e')">
+                        <area shape="rect" coords="151,4,191,36" href="javascript:keyboardPress('r')">
+                        <area shape="rect" coords="197,4,237,36" href="javascript:keyboardPress('t')">
+                        <area shape="rect" coords="243,4,283,36" href="javascript:keyboardPress('y')">
+                        <area shape="rect" coords="289,4,329,36" href="javascript:keyboardPress('u')">
+                        <area shape="rect" coords="335,4,375,36" href="javascript:keyboardPress('i')">
+                        <area shape="rect" coords="381,4,421,36" href="javascript:keyboardPress('o')">
+                        <area shape="rect" coords="427,4,467,36" href="javascript:keyboardPress('p')">
+                        
+    
+                        <area shape="rect" coords="36,45,75,77" href="javascript:keyboardPress('a')">
+                        <area shape="rect" coords="82,45,121,77" href="javascript:keyboardPress('s')">
+                        <area shape="rect" coords="128,45,167,77" href="javascript:keyboardPress('d')">
+                        <area shape="rect" coords="174,45,213,77" href="javascript:keyboardPress('f')">
+                        <area shape="rect" coords="220,45,259,77" href="javascript:keyboardPress('g')">
+                        <area shape="rect" coords="267,45,306,77" href="javascript:keyboardPress('h')">
+                        <area shape="rect" coords="312,45,351,77" href="javascript:keyboardPress('j')">
+                        <area shape="rect" coords="358,45,397,77" href="javascript:keyboardPress('k')">
+                        <area shape="rect" coords="404,45,443,77" href="javascript:keyboardPress('l')">
+        
+                        <area shape="rect" coords="48,86,110,119" href="javascript:keyboardPress('capsLower')">
+                        <area shape="rect" coords="117,86,156,118" href="javascript:keyboardPress('z')">
+                        <area shape="rect" coords="162,86,201,118" href="javascript:keyboardPress('x')">
+                        <area shape="rect" coords="208,86,247,118" href="javascript:keyboardPress('c')">
+                        <area shape="rect" coords="254,86,293,118" href="javascript:keyboardPress('v')">
+                        <area shape="rect" coords="301,86,340,118" href="javascript:keyboardPress('b')">
+                        <area shape="rect" coords="346,86,385,118" href="javascript:keyboardPress('n')">
+                        <area shape="rect" coords="392,86,431,118" href="javascript:keyboardPress('m')">
+                    </map>
+                </div>
+                
+                <div class="upper hidden">
+                    <img src="Images/keyboard_uppercase.png" usemap="#MapUpper">
+                    <map name="MapUpper">
+                        <area shape="rect" coords="14,4,53,36" href="javascript:keyboardPress('Q')">
+                        <area shape="rect" coords="59,4,99,36" href="javascript:keyboardPress('W')">
+                        <area shape="rect" coords="105,4,145,36" href="javascript:keyboardPress('E')">
+                        <area shape="rect" coords="151,4,191,36" href="javascript:keyboardPress('R')">
+                        <area shape="rect" coords="197,4,237,36" href="javascript:keyboardPress('T')">
+                        <area shape="rect" coords="243,4,283,36" href="javascript:keyboardPress('Y')">
+                        <area shape="rect" coords="289,4,329,36" href="javascript:keyboardPress('U')">
+                        <area shape="rect" coords="335,4,375,36" href="javascript:keyboardPress('I')">
+                        <area shape="rect" coords="381,4,421,36" href="javascript:keyboardPress('O')">
+                        <area shape="rect" coords="427,4,467,36" href="javascript:keyboardPress('P')">
+                        
+                        <area shape="rect" coords="36,45,75,77" href="javascript:keyboardPress('A')">
+                        <area shape="rect" coords="82,45,121,77" href="javascript:keyboardPress('S')">
+                        <area shape="rect" coords="128,45,167,77" href="javascript:keyboardPress('D')">
+                        <area shape="rect" coords="174,45,213,77" href="javascript:keyboardPress('F')">
+    
+                        <area shape="rect" coords="220,45,259,77" href="javascript:keyboardPress('G')">
+                        <area shape="rect" coords="267,45,306,77" href="javascript:keyboardPress('H')">
+                        <area shape="rect" coords="312,45,351,77" href="javascript:keyboardPress('J')">
+                        <area shape="rect" coords="358,45,397,77" href="javascript:keyboardPress('K')">
+                        <area shape="rect" coords="404,45,443,77" href="javascript:keyboardPress('L')">
+        
+                        <area shape="rect" coords="48,86,110,119" href="javascript:keyboardPress('capsUpper')">
+                        <area shape="rect" coords="117,86,156,118" href="javascript:keyboardPress('Z')">
+                        <area shape="rect" coords="162,86,201,118" href="javascript:keyboardPress('X')">
+                        <area shape="rect" coords="208,86,247,118" href="javascript:keyboardPress('C')">
+                        <area shape="rect" coords="254,86,293,118" href="javascript:keyboardPress('V')">
+                        <area shape="rect" coords="301,86,340,118" href="javascript:keyboardPress('B')">
+                        <area shape="rect" coords="346,86,385,118" href="javascript:keyboardPress('N')">
+                        <area shape="rect" coords="392,86,431,118" href="javascript:keyboardPress('M')">
+                    </map>
+                </div>
+    
+                <div class="numbers hidden">
+                    <img src="Images/keyboard_numbers.png" usemap="#MapNumbers">
+                    <map name="MapNumbers">
+                        <area shape="rect" coords="14,4,53,36" href="javascript:keyboardPress('1')">
+                        <area shape="rect" coords="59,4,98,36" href="javascript:keyboardPress('2')">
+                        <area shape="rect" coords="105,4,144,36" href="javascript:keyboardPress('3')">
+                        <area shape="rect" coords="151,4,190,36" href="javascript:keyboardPress('4')">
+                        <area shape="rect" coords="197,4,236,36" href="javascript:keyboardPress('5')">
+                        <area shape="rect" coords="243,4,282,36" href="javascript:keyboardPress('6')">
+                        <area shape="rect" coords="290,4,329,36" href="javascript:keyboardPress('7')">
+                        <area shape="rect" coords="336,4,375,36" href="javascript:keyboardPress('8')">
+                        <area shape="rect" coords="382,4,421,36" href="javascript:keyboardPress('9')">
+                        <area shape="rect" coords="428,4,467,36" href="javascript:keyboardPress('0')">
+                        
+                        <area shape="rect" coords="14,45,53,77" href="javascript:keyboardPress('-')">
+                        <area shape="rect" coords="59,45,98,77" href="javascript:keyboardPress('/')">
+                        <area shape="rect" coords="105,45,144,77" href="javascript:keyboardPress(':')">
+                        <area shape="rect" coords="151,45,190,77" href="javascript:keyboardPress(';')">
+                        <area shape="rect" coords="197,45,236,77" href="javascript:keyboardPress('(')">
+                        <area shape="rect" coords="243,45,282,77" href="javascript:keyboardPress(')')">
+                        <area shape="rect" coords="290,45,329,77" href="javascript:keyboardPress('£')">
+                        <area shape="rect" coords="336,45,375,77" href="javascript:keyboardPress('&')">
+                        <area shape="rect" coords="382,45,421,77" href="javascript:keyboardPress('@')">
+                        <area shape="rect" coords="428,45,467,77" href="javascript:keyboardPress('&quot;')">
+                        
+                        <area shape="rect" coords="83,86,144,117" href="javascript:keyboardPress('symbols')">
+                        <area shape="rect" coords="152,86,191,118" href="javascript:keyboardPress('.')">
+                        <area shape="rect" coords="198,86,237,118" href="javascript:keyboardPress(',')">
+                        <area shape="rect" coords="244,86,283,118" href="javascript:keyboardPress('?')">
+                        <area shape="rect" coords="290,86,329,118" href="javascript:keyboardPress('!')">
+                        <area shape="rect" coords="336,86,375,118" href="javascript:keyboardPress('\'')">
+                    </map>
+                </div>
+    
+                <div class="symbols hidden">
+                    <img src="Images/keyboard_symbols.png" usemap="#MapSymbols">
+                    <map name="MapSymbols">
+                        <area shape="rect" coords="14,4,53,36" href="javascript:keyboardPress('[')">
+                        <area shape="rect" coords="59,4,98,36" href="javascript:keyboardPress(']')">
+                        <area shape="rect" coords="105,4,144,36" href="javascript:keyboardPress('{')">
+                        <area shape="rect" coords="151,4,190,36" href="javascript:keyboardPress('}')">
+                        <area shape="rect" coords="197,4,236,36" href="javascript:keyboardPress('#')">
+                        <area shape="rect" coords="243,4,282,36" href="javascript:keyboardPress('%')">
+                        <area shape="rect" coords="290,4,329,36" href="javascript:keyboardPress('^')">
+                        <area shape="rect" coords="336,4,375,36" href="javascript:keyboardPress('*')">
+                        <area shape="rect" coords="382,4,421,36" href="javascript:keyboardPress('+')">
+                        <area shape="rect" coords="428,4,467,36" href="javascript:keyboardPress('=')">
+                        
+                        <area shape="rect" coords="14,45,53,77" href="javascript:keyboardPress('_')">
+                        <area shape="rect" coords="59,45,98,77" href="javascript:keyboardPress('\')">
+                        <area shape="rect" coords="105,45,144,77" href="javascript:keyboardPress('|')">
+                        <area shape="rect" coords="151,45,190,77" href="javascript:keyboardPress('~')">
+                        <area shape="rect" coords="197,45,236,77" href="javascript:keyboardPress('<')">
+                        <area shape="rect" coords="243,45,282,77" href="javascript:keyboardPress('>')">
+                        <area shape="rect" coords="290,45,329,77" href="javascript:keyboardPress('£')">
+                        <area shape="rect" coords="336,45,375,77" href="javascript:keyboardPress('$')">
+                        <area shape="rect" coords="382,45,421,77" href="javascript:keyboardPress('¥')">
+                        <area shape="rect" coords="428,45,467,77" href="javascript:keyboardPress('´')">
+                        
+                        <area shape="rect" coords="83,86,144,117" href="javascript:keyboardPress('numbers')">
+                        <area shape="rect" coords="152,86,191,118" href="javascript:keyboardPress('.')">
+                        <area shape="rect" coords="198,86,237,118" href="javascript:keyboardPress(',')">
+                        <area shape="rect" coords="244,86,283,118" href="javascript:keyboardPress('?')">
+                        <area shape="rect" coords="290,86,329,118" href="javascript:keyboardPress('!')">
+                        <area shape="rect" coords="336,86,375,118" href="javascript:keyboardPress('\'')">
+                    </map>
+                </div>
+    
+            </div>
+    
+            <div class="bottomRow">
+                <div class="bottomRowNumbers hidden">
+                    <img src="Images/keyboard_bottom_row_numbers.png" usemap="#MapBottomRowNumbers">
+                    <map name="MapBottomRowNumbers">
+                        <area shape="rect" coords="400,2,472,34">
+                        <area shape="rect" coords="150,2,396,34" href="javascript:keyboardPress(' ')">
+                        <area shape="rect" coords="84,3,145,34" href="javascript:keyboardPress('lowercase')">
+                        <area shape="rect" coords="8,3,80,35">
+                    </map>
+                </div>
+    
+                <div class="bottomRowSymbols">
+                    <img src="Images/keyboard_bottom_row_symbols.png" usemap="#MapBottomRowSymbols">
+                    <map name="MapBottomRowSymbols">
+                        <area shape="rect" coords="400,2,472,34">
+                        <area shape="rect" coords="150,2,396,34" href="javascript:keyboardPress(' ')">
+                        <area shape="rect" coords="84,3,145,34" href="javascript:keyboardPress('numbers')">
+                        <area shape="rect" coords="8,3,80,35">
+    
+                    </map>
+                </div>
+                
+                <div id="keyboardBack" class="bottomRowButtonLeft black">Back</div>
+                <div id="keyboardNext" class="bottomRowButtonRight black">Save</div>
+    
+            </div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

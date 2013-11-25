@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.cellnovo.simulator" version = "1.0.0">
+
+<name>Cellnovo Simulator</name>
+
+<description>Application to Simulate the Cellnovo Diapetes Insulin Pump System Handset</description>
+
+<author href="http://sproutdigital.co.uk" email="phil@sproutdigital.co.uk">Phil Glen</author>
+
+<preference name="phonegap-version" value="2.3.0" />
+<preference name="fullscreen" value="true" />
+
+<!-- Icons -->
+<icon src="icon.png" />
+<icon src="icons/ios/icon.png" gap:platform="ios" width="57" height="57" />
+<icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+<icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" />
+
+<!-- Splash Screens -->
+<gap:splash src="splash.png" />
+<gap:splash src="splash/ios/Default-Landscape.png" width="1024" height="768" />
+<gap:splash src="splash/ios/Default-Portrait.png" width="768" height="1024" />
+<gap:splash src="splash/ios/Default.png" width="320" height="480" />
+<gap:splash src="splash/ios/Default_at_2x.png" width="640" height="960" />
+<gap:splash src="splash/ios/Default_iphone5.png" width="640" height="1136" />
+
+</widget>
